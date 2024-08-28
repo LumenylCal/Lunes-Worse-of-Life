@@ -1,0 +1,19 @@
+BoilFreezeDB: {
+	DisplayName: Vaccum
+	Description: You're blood is boiling!
+}
+
+NightChild: {
+	DisplayName: Night Child
+	Description: So sleepy... My eyelids are so heavy
+}
+
+HeatStroke: {
+	DisplayName: Heat Stroke
+	Description: It's so hot! Major decreases to many stats
+}
+
+Caffeinated: {
+	DisplayName: Caffeinated
+	Description: You feel energized!
+}
