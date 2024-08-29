@@ -34,11 +34,11 @@ namespace LuneWoL.Common.LWoLPlayers
         {
             if (!LuneWoL.LWoLServerConfig.SpacePain) return;
 
+            if (Player.whoAmI != Main.myPlayer) return;
+
             if (!Player.ZoneNormalSpace) return;
 
             if (Player.behindBackWall) return;
-
-            if (Player.whoAmI != Main.myPlayer) return;
 
             Main.buffNoTimeDisplay[ModContent.BuffType<BoilFreezeDB>()] = true;
             Player.AddBuff(ModContent.BuffType<BoilFreezeDB>(), 15, true, false);
@@ -445,14 +445,15 @@ namespace LuneWoL.Common.LWoLPlayers
 
         //3 implemented! //2 need immunities for this...//1 with the stored water level add pressuredepthmax to see how deep the player can go
 
-        // (hard to do) maybe penalties for dying such as reduced max hp just to be evil obviously in masochist config
+        // (annoyinh to do) maybe penalties for dying such as reduced max hp just to be evil obviously in masochist config
 
         // maybe or maybe not // ranged weapons have a change to explode but were talking 0.00001% chance or smth and when i say explode i mean it spawns an explostion at the player so the item will be intact
 
-        // literally so hard to make // rain leaves water behind leading to floods when alot of rain and droghuts when there hasnt been rain in a long time (excludig if the player is in the beach biome)
+        // literally so annoying to make // rain leaves water behind leading to floods when alot of rain and droghuts when there hasnt been rain in a long time (excludig if the player is in the beach biome)
 
         // maybe later... // poor air quality in caves leading player to take DoT unless they have {Immunity Item/Buff}
 
         #endregion
+
     }
 }

@@ -19,32 +19,59 @@ LWoLServerConfig: {
 			'''
 			Sets the player onfire without proper protection. 
 			(Obsidian skin/skull or similar)
+
+			Suggested by `Gamma_sol`.
 			'''
 	}
 
 	SlowWater: {
 		Label: Slow Water
-		Tooltip: Caps the max speed you can move underwater.
+		Tooltip:
+			'''
+			Caps the max speed you can move underwater.
+
+			Suggested by `Lune`.
+			'''
 	}
 
 	WindArrows: {
 		Label: Wind Affects Arrows
-		Tooltip: Make arrows affected by wind.
+		Tooltip:
+			'''
+			Make arrows affected by wind.
+
+			Suggested by `Lune`.
+			'''
 	}
 
 	Chilly: {
 		Label: Chilly
-		Tooltip: Gives you the chilled debuff in the tundra.
+		Tooltip:
+			'''
+			Gives you the chilled debuff in the tundra.
+
+			Suggested by `Lune`.
+			'''
 	}
 
 	DarkerNights: {
 		Label: Darker Nights
-		Tooltip: Obscures your vision at night.
+		Tooltip:
+			'''
+			Obscures your vision at night.
+
+			Suggested by `Lune`.
+			'''
 	}
 
 	DarkWaters: {
 		Label: Dark Waters
-		Tooltip: Makes it harder to see in water.
+		Tooltip:
+			'''
+			Makes it harder to see in water.
+
+			Suggested by `Lune`.
+			'''
 	}
 
 	NoMoneh: {
@@ -54,6 +81,8 @@ LWoLServerConfig: {
 			Set to 1 to disable.
 
 			Multiplies the amount of money an enemy drops.
+
+			Suggested by `Lune`.
 			'''
 	}
 
@@ -63,7 +92,7 @@ LWoLServerConfig: {
 			'''
 			Makes invasions work anywhere on the surface not just the spawn and towns.
 
-			Suggested by "SpecyJ"
+			Suggested by `SpecyJ`.
 			'''
 	}
 
@@ -74,12 +103,21 @@ LWoLServerConfig: {
 			Multiplies how many enemies you need to kill to defeat the invasion.
 
 			-1 Disables this setting.
+
+			Suggested by `Lune`.
 			'''
 	}
 
 	ArmourRework: {
 		Label: Armour Rework
-		Tooltip: Lead only for now
+		Tooltip:
+			'''
+			Gives Some armour types debuffs.
+
+			For example lead armour poisoning you.
+
+			Suggested by `Lune`.
+			'''
 	}
 
 	HealingPotionBadMult: {
@@ -89,6 +127,8 @@ LWoLServerConfig: {
 			Divides amount healed by set number.
 
 			Set to 0 to disable.
+
+			Suggested by `Lune`.
 			'''
 	}
 
@@ -99,6 +139,8 @@ LWoLServerConfig: {
 			Makes the evil biome only enterable during night time
 
 			Applies alooot of Damage Over Time when in the crimson or corruption during day.
+
+			Suggested by `Lune`.
 			'''
 	}
 
@@ -106,9 +148,6 @@ LWoLServerConfig: {
 		Label: Depth Pressure Mode
 		Tooltip:
 			'''
-			Due to issues that I do not understand, you need to reload everytime you rejoin a world...
-			You do not need to reload if you just started the game since it reloads at start.
-
 			deeper you are in the water body, the faster you lose breath 
 
 			Changes the mode of how pressure is calculated. 
@@ -118,6 +157,8 @@ LWoLServerConfig: {
 			1: NOT IMPLEMENTED accurate but slow. 
 
 			2: fast but can be sometimes inaccurate.
+
+			Suggested by `Lune`.
 			'''
 	}
 
@@ -130,12 +171,19 @@ LWoLServerConfig: {
 			Deserts are hot. 
 
 			Applies an inhumane amount of nerfs to the player for no reason what so ever!
+
+			Suggested by `Lune`.
 			'''
 	}
 
 	SpacePain: {
 		Label: Space Vaccum
-		Tooltip: Slowly kills you when in space and not behind a wall.
+		Tooltip:
+			'''
+			Slowly kills you when in space and not behind a wall.
+
+			Suggested by `Gamma_sol`.
+			'''
 	}
 
 	WaterPoison: {
@@ -145,6 +193,8 @@ LWoLServerConfig: {
 			Jungle: Poison
 			Evil Biomes: Evil debuff (Cursed Flames/Ichor)
 			Hallow: Confusion
+
+			Suggested by `Lune`.
 			'''
 	}
 
@@ -155,6 +205,8 @@ LWoLServerConfig: {
 			Blizzards will freeze you unless you're behind a wall or near a campfire.
 
 			Sandstorms will blind you and make it really hard to see.
+
+			Suggested by `Lune`.
 			'''
 	}
 
@@ -164,7 +216,7 @@ LWoLServerConfig: {
 			'''
 			Completely disables all accessories from being equiped.
 
-			Suggested by "Wallarus"
+			Suggested by `Wallarus`.
 			'''
 	}
 
@@ -176,7 +228,7 @@ LWoLServerConfig: {
 
 			set to 0 to disable
 
-			Suggested by "Wallarus"
+			Suggested by `Wallarus`.
 			'''
 	}
 
@@ -188,7 +240,7 @@ LWoLServerConfig: {
 
 			set to -1 to disable
 
-			Suggested by "Wallarus"
+			Suggested by `Wallarus`.
 			'''
 	}
 
@@ -211,18 +263,28 @@ LWoLServerConfig: {
 			for mode 2 and 4
 			Doesn't deal damage but keeps the missing part upon a critical fail.
 
-			Suggested by "Wallarus"
+			Suggested by `Wallarus`.
 			'''
 	}
 
 	BuyMult: {
 		Label: Buy Multiplier
-		Tooltip: Multiplies the amount of money needed to buy stuff
+		Tooltip:
+			'''
+			Multiplies the amount of money needed to buy stuff
+
+			Suggested by `Lune`.
+			'''
 	}
 
 	SellMult: {
 		Label: Sell Multiplier
-		Tooltip: Multiplies the amount of money you get from selling stuff
+		Tooltip:
+			'''
+			Multiplies the amount of money you get from selling stuff
+
+			Suggested by `Lune`.
+			'''
 	}
 
 	DisableWoLItems: {
@@ -236,13 +298,18 @@ LWoLServerConfig: {
 			'''
 			Removes the nerf calamity mod gives to some enemies in expert and above.
 
-			Suggested by "SpecyJ"
+			Suggested by `SpecyJ`.
 			'''
 	}
 
 	NeverGoldEnough: {
 		Label: Never Gold Enough
-		Tooltip: Caps the max amount of money an enemy can drop to 16 silver
+		Tooltip:
+			'''
+			Caps the max amount of money an enemy can drop to 16 silver.
+
+			Suggested by `Wallarus`.
+			'''
 	}
 }
 

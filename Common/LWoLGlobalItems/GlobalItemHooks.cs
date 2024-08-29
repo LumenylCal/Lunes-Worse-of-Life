@@ -26,7 +26,11 @@ namespace LuneWoL.Common.LWoLGlobalItems
             if (LuneWoL.LWoLServerConfig.DarkerNights)
             {
                 if (player.whoAmI == Main.myPlayer)
-                { 
+                {
+                    if (player.dead)
+                    {
+                        DrinkingCoffeeCanQuationMark = true;
+                    }
                     CanConsumeMoreCoffee(); 
                 }
                 if (item.type == ItemID.CoffeeCup)
