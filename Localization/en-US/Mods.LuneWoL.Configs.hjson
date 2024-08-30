@@ -311,6 +311,11 @@ LWoLServerConfig: {
 			Suggested by `Wallarus`.
 			'''
 	}
+
+	ExplosiveGuns: {
+		Tooltip: ""
+		Label: Explosive Guns
+	}
 }
 
 LWoLClientConfig: {

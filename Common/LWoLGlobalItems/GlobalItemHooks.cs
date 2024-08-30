@@ -1,7 +1,9 @@
 ﻿using LuneWoL.Common.LWoLPlayers;
 using LuneWoL.Content.Items;
+using Microsoft.Xna.Framework;
 using System;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -49,6 +51,21 @@ namespace LuneWoL.Common.LWoLGlobalItems
 
                 LWoLPlayer.DmgPlrBcCrit = true;
             }
+            //if (LuneWoL.LWoLServerConfig.ExplosiveGuns)
+            //{
+            //    if (item.DamageType == DamageClass.Ranged)
+            //    {
+            //        float ARGH = 1 / player.luck;
+            //        if (Main.rand.NextBool((int)ARGH))
+            //        {
+            //            if (player.whoAmI == Main.myPlayer)
+            //            {
+            //                Projectile.NewProjectile(Projectile.InheritSource(player), player.Center, Vector2.Zero, ProjectileID.Explosives, player.statLifeMax2, 0);
+            //            }
+            //            player.KillMe(PlayerDeathReason.ByCustomReason("test"), player.statLifeMax2, 0);
+            //        }
+            //    }
+            //}
 
             return base.UseItem(item, player);
         }

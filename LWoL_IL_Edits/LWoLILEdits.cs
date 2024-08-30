@@ -14,9 +14,9 @@ namespace LuneWoL.WoL_IL_Edits
             {
                 IL_Player.GetItemExpectedPrice += BuyPriceandSellPrice;
             }
-            //if (LuneWoL.LWoLServerConfig.InvasionMultiplier != -1)
+            //if (LuneWoL.LWoLServerConfig.)
             //{
-            //    IL_Main.inv
+            //    IL_Main.dro
             //}
         }
 
@@ -63,8 +63,7 @@ namespace LuneWoL.WoL_IL_Edits
         //    DropAttemptInfo dropAttemptInfo;
 
         //    if (c.TryGotoNext(MoveType.Before, i => i.MatchLdflda<NPC>("NPCDrop_DropItem"))) // i got bored
-        //    {
-        //        c.Emit(OpCodes.Call, dropAttemptInfo.rng);
+        //    { 
         //        c.Emit(OpCodes)
         //    }
 

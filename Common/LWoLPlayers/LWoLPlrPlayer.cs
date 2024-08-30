@@ -70,7 +70,7 @@ namespace LuneWoL.Common.LWoLPlayers
         {
             if (Player.OceanMan() && LuneWoL.LWoLServerConfig.SlowWater && !LTSE)
             {
-                float maxSpeed = 16f;
+                float maxSpeed = 10f;
                 if (Player.velocity.Length() > maxSpeed)
                 {
                     Player.velocity = Vector2.Normalize(Player.velocity) * maxSpeed;
@@ -80,7 +80,7 @@ namespace LuneWoL.Common.LWoLPlayers
 
         #endregion
 
-        #region Armour Reword
+        #region Armour Rework
 
         public bool ArmourReworked()
         {
@@ -95,7 +95,7 @@ namespace LuneWoL.Common.LWoLPlayers
         {
             if (!LuneWoL.LWoLServerConfig.ArmourRework) return false;
 
-            LeadReworkMove();
+            TungstenReworkMove();
 
             return true;
 
@@ -105,25 +105,26 @@ namespace LuneWoL.Common.LWoLPlayers
         {
             if (WearingFullLead || WearingTwoLeadPieces || WearingOneLeadPiece)
             {
-                L.LibPlayer().LeadPoison = true;
+                Player.LibPlayer().LeadPoison = true;
 
                 Main.buffNoTimeDisplay[BuffID.Poisoned] = true;
                 Player.AddBuff(BuffID.Poisoned, 5);
             }
         }
-        public void LeadReworkMove()
+
+        public void TungstenReworkMove()
         {
-            if (WearingFullLead)
+            if (WearingFullTungsten)
             {
                 Player.maxRunSpeed *= 0.6f;
                 Player.accRunSpeed *= 0.6f;
             }
-            else if (WearingTwoLeadPieces)
+            else if (WearingTwoTungstenPieces)
             {
                 Player.maxRunSpeed *= 0.7f;
                 Player.accRunSpeed *= 0.7f;
             }
-            else if (WearingOneLeadPiece)
+            else if (WearingOneTungstenPiece)
             {
                 Player.maxRunSpeed *= 0.8f;
                 Player.accRunSpeed *= 0.8f;
@@ -353,8 +354,8 @@ namespace LuneWoL.Common.LWoLPlayers
                     Main.buffNoTimeDisplay[ModContent.BuffType<NightChild>()] = true;
                     Player.AddBuff(ModContent.BuffType<NightChild>(), 60);
 
-                    Player.blind = true;
                     Player.LibPlayer().LNightEyes = true;
+                    Lighting.GlobalBrightness *= 0.8f;
                 }
                 else
                 {
@@ -428,12 +429,12 @@ namespace LuneWoL.Common.LWoLPlayers
 
                 if (Player.OceanMan() && LuneWoL.LWoLServerConfig.DarkWaters && LuneWoL.LWoLServerConfig.DepthPressureMode > 0)
                 {
-                Player.LibPlayer().LWaterEyes = true;
+                    Player.LibPlayer().LWaterEyes = true;
                 }
                 else if (Player.OceanMan() && LuneWoL.LWoLServerConfig.DarkWaters && LuneWoL.LWoLServerConfig.DepthPressureMode !> 0) 
                 { 
                     Player.LibPlayer().LWaterEyes = true;
-                    Player.blind = true;
+                    Lighting.GlobalBrightness *= 0.8f;
                 }
                 else
                 {
@@ -443,11 +444,7 @@ namespace LuneWoL.Common.LWoLPlayers
 
         #endregion
 
-        //3 implemented! //2 need immunities for this...//1 with the stored water level add pressuredepthmax to see how deep the player can go
-
         // (annoyinh to do) maybe penalties for dying such as reduced max hp just to be evil obviously in masochist config
-
-        // maybe or maybe not // ranged weapons have a change to explode but were talking 0.00001% chance or smth and when i say explode i mean it spawns an explostion at the player so the item will be intact
 
         // literally so annoying to make // rain leaves water behind leading to floods when alot of rain and droghuts when there hasnt been rain in a long time (excludig if the player is in the beach biome)
 

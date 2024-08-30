@@ -72,6 +72,10 @@ namespace LuneWoL.Config
         [BackgroundColor(214, 242, 215, 0)]
         [DefaultValue(false)]
         public bool ArmourRework { get; set; }
+        
+        //[BackgroundColor(214, 242, 215, 0)]
+        //[DefaultValue(false)]
+        //public bool ExplosiveGuns { get; set; }
 
         [BackgroundColor(214, 242, 215, 0)]
         [DefaultValue(false)]
