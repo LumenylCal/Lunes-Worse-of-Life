@@ -60,8 +60,8 @@ namespace LuneWoL.Config
         [Header("BuffsAndDebuffs")]
 
         [BackgroundColor(214, 218, 242, 0)]
-        [DefaultValue(0)]
-        [Range(0, 100)]
+        [DefaultValue(100f)]
+        [Range(0f, 100f)]
         [Increment(1f)]
         public float HealingPotionBadPercent { get; set; }
 

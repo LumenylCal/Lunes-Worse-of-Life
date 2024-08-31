@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace LuneWoL.Common.LWoLGlobalItems
@@ -14,9 +9,19 @@ namespace LuneWoL.Common.LWoLGlobalItems
         {
             if (LuneWoL.LWoLServerConfig.HealingPotionBadPercent > 0 && LuneWoL.LWoLServerConfig.HealingPotionBadPercent < 100)
             {
-                healValue = healValue * (int)LuneWoL.LWoLServerConfig.HealingPotionBadPercent / 100;
+                float max = LuneWoL.LWoLServerConfig.HealingPotionBadPercent;
+
+                float clampthethinging = max / 100;
+
+                float result = healValue * clampthethinging;
+
+                healValue = (int)result;
 
                 base.GetHealLife(item, player, quickHeal, ref healValue);
+            }
+            else if (LuneWoL.LWoLServerConfig.HealingPotionBadPercent == 0)
+            {
+                healValue = 0;
             }
         }
     }

@@ -120,13 +120,15 @@ LWoLServerConfig: {
 			'''
 	}
 
-	HealingPotionBadMult: {
+	HealingPotionBadPercent: {
 		Label: Worse Healing Potions
 		Tooltip:
 			'''
-			Divides amount healed by set number.
+			Percent of the potion.
 
-			Set to 0 to disable.
+			100% is normal.
+
+			Set to 100 to disable.
 
 			Suggested by `Lune`.
 			'''
@@ -342,11 +344,6 @@ LWoLServerConfig: {
 
 			Suggested by `Lune`.
 			'''
-	}
-
-	HealingPotionBadPercent: {
-		Label: Healing Potion Bad Percent
-		Tooltip: ""
 	}
 }
 
