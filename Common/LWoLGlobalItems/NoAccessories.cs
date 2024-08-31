@@ -9,6 +9,8 @@ namespace LuneWoL.Common.LWoLGlobalItems
     {
         public void NoAccessories(Item item)
         {
+            if (!LuneWoL.LWoLServerConfig.NoAccessories) return;
+
             if (!item.vanity)
             {
                 item.accessory = false;

@@ -16,6 +16,7 @@ using static LuneLib.Common.Players.LuneLibPlayer.LibPlayer;
 using LuneWoL.Content.Buffs;
 using LuneWoL.Content.Buffs.Debuffs;
 using LuneWoL.Content.Buffs.DOT;
+using static LuneWoL.Common.LWoLPlayers.LWoLPlayer;
 
 namespace LuneWoL.Common.LWoLPlayers
 {
@@ -91,6 +92,7 @@ namespace LuneWoL.Common.LWoLPlayers
             return true;
 
         }
+
         public bool ArmourReworkedMove()
         {
             if (!LuneWoL.LWoLServerConfig.ArmourRework) return false;
@@ -231,23 +233,6 @@ namespace LuneWoL.Common.LWoLPlayers
                 Player.LibPlayer().BlizzardFrozen = false;
             }
         }
-
-        #endregion
-
-        #region worse healing potions
-
-        // worse healing potions? reduced effectiveness and longer potion sickness?
-        public class HealingPotionBad : GlobalItem
-            {
-                public override void GetHealLife(Item item, Player player, bool quickHeal, ref int healValue)
-                {
-                    if (LuneWoL.LWoLServerConfig.HealingPotionBadMult != 0 || LuneWoL.LWoLServerConfig.HealingPotionBadMult != 1)
-                    {
-                        healValue /= LuneWoL.LWoLServerConfig.HealingPotionBadMult;
-                        base.GetHealLife(item, player, quickHeal, ref healValue);
-                    }
-                }
-            }
 
         #endregion
 

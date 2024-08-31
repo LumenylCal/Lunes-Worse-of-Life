@@ -62,7 +62,8 @@ namespace LuneWoL.Config
         [BackgroundColor(214, 218, 242, 0)]
         [DefaultValue(0)]
         [Range(0, 100)]
-        public int HealingPotionBadMult { get; set; }
+        [Increment(1f)]
+        public float HealingPotionBadPercent { get; set; }
 
         #endregion
 
@@ -72,7 +73,12 @@ namespace LuneWoL.Config
         [BackgroundColor(214, 242, 215, 0)]
         [DefaultValue(false)]
         public bool ArmourRework { get; set; }
-        
+
+        [BackgroundColor(214, 242, 215, 0)]
+        [DefaultValue(false)]
+        [ReloadRequired]
+        public bool DisableAutoReuse { get; set; }
+
         //[BackgroundColor(214, 242, 215, 0)]
         //[DefaultValue(false)]
         //public bool ExplosiveGuns { get; set; }
@@ -81,6 +87,11 @@ namespace LuneWoL.Config
         [DefaultValue(false)]
         [ReloadRequired]
         public bool NoAccessories { get; set; }
+        
+        [BackgroundColor(214, 242, 215, 0)]
+        [DefaultValue(false)]
+        [ReloadRequired]
+        public bool ReforgeNerf { get; set; }
 
         #endregion
 

@@ -313,8 +313,40 @@ LWoLServerConfig: {
 	}
 
 	ExplosiveGuns: {
-		Tooltip: ""
 		Label: Explosive Guns
+		Tooltip:
+			'''
+			Makes your guns have a chance of exploding on use.
+
+			Suggested by `Lune`.
+			'''
+	}
+
+	ReforgeNerf: {
+		Label: Reforge Nerf
+		Tooltip:
+			'''
+			Nerfs weapon and tool reforges.
+
+			Suggested by `Lune`.
+			'''
+	}
+
+	DisableAutoReuse: {
+		Label: Disable Auto Reuse
+		Tooltip:
+			'''
+			Disables autoreuse so you have to click every single time you want to use anything.
+
+			(i dont think this is compatible with any mods that changes autoreuse)
+
+			Suggested by `Lune`.
+			'''
+	}
+
+	HealingPotionBadPercent: {
+		Label: Healing Potion Bad Percent
+		Tooltip: ""
 	}
 }
 

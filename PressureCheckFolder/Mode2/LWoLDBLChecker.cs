@@ -15,11 +15,10 @@ namespace LuneWoL.PressureCheckFolder.Mode2
 
         public void DamageChecker()
         {
-            Player.LibPlayer().depthwaterPressure = true;
-
-            if (CalcedRM.rDD >= CalcedRM.mD)
+            if (ModeTwo.rDD >= ModeTwo.mD)
             {
-                Player.LibPlayer().currentDepthPressure = CalcedRM.pDTA - CalcedRM.mD;
+                Player.LibPlayer().depthwaterPressure = true;
+                Player.LibPlayer().currentDepthPressure = ModeTwo.pDTA;
             }
         }
 
@@ -27,7 +26,7 @@ namespace LuneWoL.PressureCheckFolder.Mode2
 
         public void BreathChecker()
         {
-            double dR = CalcedRM.tD / CalcedRM.mD;
+            double dR = ModeTwo.tD / ModeTwo.mD;
 
             dR *= 2D;
 
@@ -49,7 +48,7 @@ namespace LuneWoL.PressureCheckFolder.Mode2
             tick *= tickMult / dR;
 
             abyssBreathCD++;
-            if (abyssBreathCD >= (int)tick)
+            if (abyssBreathCD >= (int)tick && ModeTwo.tD >= 2)
             {
                 abyssBreathCD = 0;
 
@@ -62,9 +61,7 @@ namespace LuneWoL.PressureCheckFolder.Mode2
                     Player.breath -= 3;
             }
 
-            Player.LibPlayer().depthwaterPressure = true;
-
-            int lifeLossAtZeroBreath = (int)(6D * CalcedRM.rD);
+            int lifeLossAtZeroBreath = (int)(6D * ModeTwo.rD);
 
             if (lifeLossAtZeroBreath < 0)
                 lifeLossAtZeroBreath = 0;
@@ -77,11 +74,6 @@ namespace LuneWoL.PressureCheckFolder.Mode2
             if (Player.breath <= 0)
             {
                 Player.statLife -= lifeLossAtZeroBreath;
-
-                if (Player.statLife <= 0 && !Player.dead)
-                {
-                    Player.KillMe(PlayerDeathReason.ByCustomReason(LuneLibUtils.GetText("Status.Death.PressureDeath" + Main.rand.Next(1, 9 + 1)).Format(Player.name)), Player.statLifeMax2, 0);
-                }
             }
         }
 

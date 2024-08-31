@@ -117,34 +117,27 @@ namespace LuneWoL.PressureCheckFolder.Mode2
 
         public int RDD() // Reduced Depth Difference
         {
-            return rDD = (int)((LP.position.Y - pointSetter.EntryPoint.Y) * CalcedRM.rD) / 16;
+            return rDD = (int)((LP.position.Y - ModeTwo.EntryPoint.Y) * ModeTwo.rD) / 16;
         }
 
         public float TDC() // Tile Difference Clamped
         {
-            float aTDC = rDD;
-            aTDC = Math.Clamp(aTDC, 0, CalcedRM.mD);
-
-            return tDC = aTDC;
+            return tDC = Math.Clamp(rDD, 0, ModeTwo.mD);
         }
         
         public float TD() // Tile Difference
         {
-            return tD = (int)(LP.position.Y - pointSetter.EntryPoint.Y) / 16;
+            return tD = (int)(LP.position.Y - ModeTwo.EntryPoint.Y) / 16;
         }
 
         public int PDTA() // Pressure Dammage To Apply
         {
-            int pressureDamageToApply = CalcedRM.rDD;
-
-            return pDTA = pressureDamageToApply;
+            return pDTA = ModeTwo.rDD - ModeTwo.mD;
         }
         
         public float LDD() // Light Depth Difference
         {
-            float lightDepthDifference = CalcedRM.tDC / CalcedRM.mD;
-
-            return lDD = lightDepthDifference;
+            return lDD = ModeTwo.tDC / ModeTwo.mD;
         }
     }
 }

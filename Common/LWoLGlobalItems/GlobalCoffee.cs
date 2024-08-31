@@ -19,6 +19,13 @@ namespace LuneWoL.Common.LWoLGlobalItems
 
             Main.NewText("You feel energized!");
         }
+
+        private void Comedown(Player player)
+        {
+            if (player.whoAmI != Main.myPlayer) return;
+
+            Main.NewText("You're starting to come down from the coffee.");
+        }
         private async void CanConsumeMoreCoffee()
         {
             DrinkingCoffeeCanQuationMark = false;
@@ -32,6 +39,10 @@ namespace LuneWoL.Common.LWoLGlobalItems
             await Task.Delay(1250);
 
             player.AddBuff(ModContent.BuffType<Caffeinated>(), 18000);
+
+            await Task.Delay(297000);
+
+            Comedown(player);
         }
     }
 }

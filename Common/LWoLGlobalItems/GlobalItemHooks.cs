@@ -90,10 +90,9 @@ namespace LuneWoL.Common.LWoLGlobalItems
 
         public override void SetDefaults(Item item)
         {
-            if (LuneWoL.LWoLServerConfig.NoAccessories)
-            {
-                NoAccessories(item);
-            }
+            NoAccessories(item);
+
+            NoReusing(item);
         }
 
         public override void PostUpdate(Item item)

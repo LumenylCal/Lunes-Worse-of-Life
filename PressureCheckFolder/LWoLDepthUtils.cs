@@ -5,7 +5,6 @@ namespace LuneWoL.PressureCheckFolder
 {
     public static class LWoLDepthUtils
     {
-        public static PressureModeTwo pointSetter = LP.GetModPlayer<PressureModeTwo>();
-        public static PressureModeTwo CalcedRM = LP.GetModPlayer<PressureModeTwo>();
+        public static PressureModeTwo ModeTwo = LP.GetModPlayer<PressureModeTwo>();
     }
 }

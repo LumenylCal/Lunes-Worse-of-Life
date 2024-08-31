@@ -52,9 +52,16 @@ namespace LuneWoL.PressureCheckFolder.Mode2
                 if (Player.LibPlayer().LWaterEyes && Player.whoAmI == Main.myPlayer)
                 {
                     value = 1f;
-                    amount = CalcedRM.lDD;
+                    amount = ModeTwo.lDD;
                 }
                 ScreenObstruction.screenObstruction = MathHelper.Lerp(ScreenObstruction.screenObstruction, value, amount);
+            }
+
+            float reversedLDD = (1 - LWoLDepthUtils.ModeTwo.lDD);
+            float clampedLDD = MathHelper.Clamp(reversedLDD, 0.5f, 1f);
+            if (LP.LibPlayer().LWaterEyes && LuneWoL.LWoLServerConfig.DepthPressureMode > 0 && Player.whoAmI == Main.myPlayer)
+            {
+                Lighting.GlobalBrightness *= clampedLDD;
             }
 
             if (LuneLib.LuneLib.debug.DebugMessages && Player.whoAmI == Main.myPlayer && LuneWoL.LWoLServerConfig.DepthPressureMode > 0)
