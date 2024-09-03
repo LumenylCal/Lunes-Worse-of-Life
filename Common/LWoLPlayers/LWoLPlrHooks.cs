@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using LuneWoL.Core.Config;
+using Terraria;
 using Terraria.ModLoader;
 
 using static LuneLib.Utilities.LuneLibUtils;
@@ -13,11 +14,12 @@ namespace LuneWoL.Common.LWoLPlayers
         public override void OnEnterWorld()
         {
             EnterWorldMessage();
-        }
 
-        public override void UpdateEquips()
-        {
-            base.UpdateEquips(); //emgpty
+            if (Player.whoAmI == Main.myPlayer)
+            {
+                LWoLGlobalItems.WoLGlobalItems.LalalalalaCanthearyou = 7200;
+            }
+
         }
 
         public override void PostUpdateEquips()
@@ -34,11 +36,6 @@ namespace LuneWoL.Common.LWoLPlayers
             SlowWater();
 
             HeatExhaustionUpdRunSpeed();
-        }
-
-        public override void PreUpdateMovement()
-        {
-            base.PostUpdateBuffs();
         }
 
         public override void PreUpdateBuffs()
@@ -58,31 +55,27 @@ namespace LuneWoL.Common.LWoLPlayers
             DarkerNights();
         }
 
-        public override void PostUpdateBuffs()
-        {
-            base.PostUpdateBuffs();
-        }
-
         public override void PostUpdateMiscEffects()
         {
             HeatExhaustion();
         }
 
-        public override void PreUpdate()
-        {
-            base.PreUpdate(); //empyu
-        }
-
         public override void PostUpdate()
         {
+            var Config = LuneWoL.LWoLServerConfig.Main;
+
             if (Player.whoAmI == Main.myPlayer && LuneLib.LuneLib.debug.DebugMessages)
             {
                 Main.NewText($"Heat = {HeatStrokeCounter}, Bliz = {tundraBlizzardCounter}");
             }
 
-            if (DmgPlrBcCrit && LuneWoL.LWoLServerConfig.CritFailMode > 0)
+            if (DmgPlrBcCrit && Config.CritFailMode > 0)
             {
                 CritFailDamage(Player);
+            }
+            if (Player.whoAmI == Main.myPlayer)
+            {
+                LWoLGlobalItems.WoLGlobalItems.CanConsumeMoreCoffee();
             }
 
             // https://steamcommunity.com/sharedfiles/filedetails/?id=2395507804
@@ -90,9 +83,20 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public override void OnHitNPC(NPC npc, NPC.HitInfo hit, int damageDone)
         {
-            if (!IsCritFail && LuneWoL.LWoLServerConfig.CritFailMode != 0)
+            var Config = LuneWoL.LWoLServerConfig.Main;
+
+            if (!IsCritFail && Config.CritFailMode != 0)
             {
                 CritFail(Player, npc);
+            }
+        }
+
+        public override void OnRespawn()
+        {
+            if (Player.whoAmI == Main.myPlayer)
+            {
+               LWoLGlobalItems.WoLGlobalItems.LalalalalaCanthearyou = 7200;
+               LWoLGlobalItems.WoLGlobalItems.UrMomIsSoSkibidiIBangedHerLastNight = 0;
             }
         }
 

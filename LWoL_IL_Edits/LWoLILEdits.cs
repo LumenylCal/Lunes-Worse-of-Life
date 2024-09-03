@@ -11,12 +11,15 @@ namespace LuneWoL.WoL_IL_Edits
     {
         public static void load()
         {
-            if (LuneWoL.LWoLServerConfig.SellMult != 1 || LuneWoL.LWoLServerConfig.BuyMult != 1)
+            var npc = LuneWoL.LWoLServerConfig.NPCs;
+            var equip = LuneWoL.LWoLServerConfig.Equipment;
+
+            if (npc.SellMult != 1 || npc.BuyMult != 1)
             {
                 IL_Player.GetItemExpectedPrice += BuyPriceandSellPrice;
             }
 
-            if (LuneWoL.LWoLServerConfig.ReforgeNerf)
+            if (equip.ReforgeNerf)
             {
                 IL_Player.GrantPrefixBenefits += NerfAccessoryReforges;
                 IL_Main.MouseText_DrawItemTooltip_GetLinesInfo += AccessoryTooltipFix;
@@ -27,33 +30,35 @@ namespace LuneWoL.WoL_IL_Edits
         #region buy and sell consume capitalism stuff
         private static void BuyPriceandSellPrice(ILContext il)
         {
+            var npc = LuneWoL.LWoLServerConfig.NPCs;
+
             var cursor = new ILCursor(il);
 
             if (cursor.TryGotoNext(MoveType.Before, i => i.MatchLdarg(0), i => i.MatchLdflda<Player>("currentShoppingSettings")))
             {
                 cursor.RemoveRange(4);
-                cursor.Emit(OpCodes.Ldc_R4, LuneWoL.LWoLServerConfig.BuyMult);
+                cursor.Emit(OpCodes.Ldc_R4, npc.BuyMult);
                 cursor.Emit(OpCodes.Conv_R8);
                 cursor.Emit(OpCodes.Mul);
             }
             if (cursor.TryGotoNext(MoveType.Before, i => i.MatchLdarg(0), i => i.MatchLdflda<Player>("currentShoppingSettings")))
             {
                 cursor.RemoveRange(4);
-                cursor.Emit(OpCodes.Ldc_R4, LuneWoL.LWoLServerConfig.SellMult);
+                cursor.Emit(OpCodes.Ldc_R4, npc.SellMult);
                 cursor.Emit(OpCodes.Conv_R8);
                 cursor.Emit(OpCodes.Mul);
             }
             if (cursor.TryGotoNext(MoveType.Before, i => i.MatchLdarg(0), i => i.MatchLdflda<Player>("currentShoppingSettings")))
             {
                 cursor.RemoveRange(4);
-                cursor.Emit(OpCodes.Ldc_R4, LuneWoL.LWoLServerConfig.BuyMult);
+                cursor.Emit(OpCodes.Ldc_R4, npc.BuyMult);
                 cursor.Emit(OpCodes.Conv_R8);
                 cursor.Emit(OpCodes.Mul);
             }
             if (cursor.TryGotoNext(MoveType.Before, i => i.MatchLdarg(0), i => i.MatchLdflda<Player>("currentShoppingSettings")))
             {
                 cursor.RemoveRange(4);
-                cursor.Emit(OpCodes.Ldc_R4, LuneWoL.LWoLServerConfig.SellMult);
+                cursor.Emit(OpCodes.Ldc_R4, npc.SellMult);
                 cursor.Emit(OpCodes.Conv_R8);
                 cursor.Emit(OpCodes.Mul);
             }

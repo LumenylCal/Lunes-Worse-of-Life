@@ -12,7 +12,9 @@ namespace LuneWoL.CalamityModChanges.Common.Npcs
     {
         public override void SetDefaults(NPC npc)
         {
-            if (LuneWoL.LWoLServerConfig.DifficultyRebuff)
+            var cal = LuneWoL.LWoLServerConfig.CalamityMod;
+
+            if (cal.DifficultyRebuff)
             {
                 OtherStatChanges(npc);
             }

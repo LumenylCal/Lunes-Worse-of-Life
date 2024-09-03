@@ -7,7 +7,10 @@ namespace LuneWoL.Common.Npcs
     {
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
-            if (LuneWoL.LWoLServerConfig.DarkerNights && !LuneWoL.LWoLServerConfig.DisableWoLItems)
+            var main = LuneWoL.LWoLServerConfig.Main;
+            var misc = LuneWoL.LWoLServerConfig.Misc;
+
+            if (main.DarkerNights && !misc.DisableWoLItems)
             {
                 CoffeeBeanDrop(npc, npcLoot);
             }

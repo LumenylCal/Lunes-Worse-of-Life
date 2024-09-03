@@ -7,7 +7,10 @@ namespace LuneWoL.Content.Items
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return LuneWoL.LWoLServerConfig.DarkerNights && !LuneWoL.LWoLServerConfig.DisableWoLItems;
+            var main = LuneWoL.LWoLServerConfig.Main;
+            var misc = LuneWoL.LWoLServerConfig.Misc;
+
+            return main.DarkerNights && !misc.DisableWoLItems;
         }
 
         public override string Texture => "LuneWoL/Assets/Images/Items/CoffeeBeans";

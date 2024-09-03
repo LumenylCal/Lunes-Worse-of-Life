@@ -26,33 +26,7 @@ namespace LuneWoL.PressureCheckFolder.Mode2
 
         public float lDD;
 
-        //[JITWhenModsEnabled("CalamityMod")]
-        //public int CLMD()
-        //{
-        //    if (Player.LibPlayer().IsNearLune)
-        //    {
-        //        mD = int.MaxValue;
-        //        Player.LibPlayer().depthwaterPressure = false;
-        //        Player.LibPlayer().currentDepthPressure = 0;
-        //    }
-        //    else if (Player.arcticDivingGear)
-        //    {
-        //        mD = 1000;
-        //    }
-        //    else if (Player.accDivingHelm)
-        //    {
-        //        mD = 750;
-        //    }
-        //    else if (Player.gills)
-        //    {
-        //        mD = 500;
-        //    }
-        //    else
-        //    {
-        //        mD = 200;
-        //    }
-        //    return mD;
-        //}
+        //TODO: add difficulty options and mod compat such as calamity
 
         public int MD() // Max Depth
         {

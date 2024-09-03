@@ -17,6 +17,7 @@ using LuneWoL.Content.Buffs;
 using LuneWoL.Content.Buffs.Debuffs;
 using LuneWoL.Content.Buffs.DOT;
 using static LuneWoL.Common.LWoLPlayers.LWoLPlayer;
+using static LuneWoL.LuneWoL;
 
 namespace LuneWoL.Common.LWoLPlayers
 {
@@ -33,7 +34,9 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public void prebuffBurnFreeze()
         {
-            if (!LuneWoL.LWoLServerConfig.SpacePain) return;
+            var Config = LWoLServerConfig.BiomeSpecific;
+
+            if (!Config.SpacePain) return;
 
             if (Player.whoAmI != Main.myPlayer) return;
 
@@ -51,7 +54,9 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public void HellIsQuiteHot()
         {
-            if (!LuneWoL.LWoLServerConfig.HellIsHot) return;
+            var Config = LWoLServerConfig.BiomeSpecific;
+
+            if (!Config.HellIsHot) return;
 
             if (!Player.ZoneUnderworldHeight) return;
 
@@ -69,7 +74,9 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public void SlowWater()
         {
-            if (Player.OceanMan() && LuneWoL.LWoLServerConfig.SlowWater && !LTSE)
+            var Config = LWoLServerConfig.WaterRelated;
+
+            if (Player.OceanMan() && Config.SlowWater && !LL)
             {
                 float maxSpeed = 10f;
                 if (Player.velocity.Length() > maxSpeed)
@@ -85,7 +92,9 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public bool ArmourReworked()
         {
-            if (!LuneWoL.LWoLServerConfig.ArmourRework) return false;
+            var Config = LWoLServerConfig.Equipment;
+
+            if (!Config.ArmourRework) return false;
 
             LeadRework();
 
@@ -95,7 +104,9 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public bool ArmourReworkedMove()
         {
-            if (!LuneWoL.LWoLServerConfig.ArmourRework) return false;
+            var Config = LWoLServerConfig.Equipment;
+
+            if (!Config.ArmourRework) return false;
 
             TungstenReworkMove();
 
@@ -139,9 +150,11 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public void WaterPoison()
         {
-            if (!LuneWoL.LWoLServerConfig.WaterPoison) return;
+            var Config = LWoLServerConfig.WaterRelated;
+
+            if (!Config.WaterPoison) return;
             if (!Player.wet || Player.lavaWet || Player.honeyWet) return;
-            if (LTSE) return;
+            if (LL) return;
 
             if (Player.ZoneCrimson)
             {
@@ -190,8 +203,9 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public void WeatherPain()
         {
+            var Config = LWoLServerConfig.BiomeSpecific;
 
-            if (!LuneWoL.LWoLServerConfig.WeatherPain) return;
+            if (!Config.WeatherPain) return;
 
             if (Main.raining && Player.ZoneCrimson || Player.ZoneCorrupt && !Player.behindBackWall)
             {
@@ -250,8 +264,9 @@ namespace LuneWoL.Common.LWoLPlayers
             // cold env give chilled debuff?
             public void ColdMakeColdBrrrrr()
             {
+                var Config = LWoLServerConfig.BiomeSpecific;
 
-                if (!LuneWoL.LWoLServerConfig.Chilly) return;
+                if (!Config.Chilly) return;
 
                 if (WearingFullEskimo) return;
 
@@ -286,9 +301,11 @@ namespace LuneWoL.Common.LWoLPlayers
             // evil biomes are night time only?
             public void Thisissoevillmfao()
             {
+                var Config = LWoLServerConfig.BiomeSpecific;
+
                 if (!Main.dayTime) return;
 
-                if (!LuneWoL.LWoLServerConfig.NoEvilDayTime) return;
+                if (!Config.NoEvilDayTime) return;
 
                 if (Player.ZoneCorrupt || Player.ZoneCrimson)
                 {
@@ -303,25 +320,27 @@ namespace LuneWoL.Common.LWoLPlayers
         #endregion
 
         #region wind fucks w arrows
-            public class Windproj : GlobalProjectile
+        public class Windproj : GlobalProjectile
+        {
+            public override void PostAI(Projectile Projectile)
             {
-            public override void PostAI(Projectile projectile)
-            {
-                if (LuneWoL.LWoLServerConfig.WindArrows && projectile.arrow && 
-                    (double)projectile.Center.Y < Main.worldSurface * 16.0 
-                    && Main.tile[(int)projectile.Center.X / 16, (int)projectile.Center.Y / 16] != null 
-                    && Main.tile[(int)projectile.Center.X / 16, (int)projectile.Center.Y / 16].WallType == 0 
-                    && ((projectile.velocity.X > 0f 
+                var Config = LWoLServerConfig.Main;
+
+                if (Config.WindArrows && Projectile.arrow && 
+                    (double)Projectile.Center.Y < Main.worldSurface * 16.0 
+                    && Main.tile[(int)Projectile.Center.X / 16, (int)Projectile.Center.Y / 16] != null 
+                    && Main.tile[(int)Projectile.Center.X / 16, (int)Projectile.Center.Y / 16].WallType == 0 
+                    && ((Projectile.velocity.X > 0f 
                     && Main.windSpeedCurrent < 0f) 
-                    || (projectile.velocity.X < 0f 
+                    || (Projectile.velocity.X < 0f 
                     && Main.windSpeedCurrent > 0f) 
-                    || Math.Abs(projectile.velocity.X) < Math.Abs(Main.windSpeedCurrent * Main.windPhysicsStrength) * 180f) 
-                    && Math.Abs(projectile.velocity.X) < 16f)
+                    || Math.Abs(Projectile.velocity.X) < Math.Abs(Main.windSpeedCurrent * Main.windPhysicsStrength) * 180f) 
+                    && Math.Abs(Projectile.velocity.X) < 16f)
                 {
-                    projectile.velocity.X += Main.windSpeedCurrent * Main.windPhysicsStrength;
-                    MathHelper.Clamp(projectile.velocity.X, -16f, 16f); ;
+                    Projectile.velocity.X += Main.windSpeedCurrent * Main.windPhysicsStrength;
+                    MathHelper.Clamp(Projectile.velocity.X, -16f, 16f); ;
                 }
-                base.PostAI(projectile);
+                base.PostAI(Projectile);
             }
         }
 
@@ -332,7 +351,9 @@ namespace LuneWoL.Common.LWoLPlayers
             // giving players darkness during nights or even blackout
             public void DarkerNights()
             {
-                if (!LuneWoL.LWoLServerConfig.DarkerNights) return;
+                var Config = LWoLServerConfig.Main;
+
+                if (!Config.DarkerNights) return;
 
                 if (!Main.dayTime && !Player.HasBuff<Caffeinated>())
                 {
@@ -340,7 +361,6 @@ namespace LuneWoL.Common.LWoLPlayers
                     Player.AddBuff(ModContent.BuffType<NightChild>(), 60);
 
                     Player.LibPlayer().LNightEyes = true;
-                    Lighting.GlobalBrightness *= 0.8f;
                 }
                 else
                 {
@@ -355,7 +375,9 @@ namespace LuneWoL.Common.LWoLPlayers
         // new "Heat Exhaustion" debuff increases mana costs and decreases max summons and move speed and attack speed
         public void HeatExhaustion()
         {
-            if (!LuneWoL.LWoLServerConfig.HeatStroke) return;
+            var Config = LWoLServerConfig.BiomeSpecific;
+
+            if (!Config.HeatStroke) return;
 
             if (Main.dayTime && WearingAnyArmour && !Player.behindBackWall && !(Player.wet || Player.HasBuff(BuffID.Wet)) && Player.ZoneDesert)
             {
@@ -408,15 +430,17 @@ namespace LuneWoL.Common.LWoLPlayers
             // blackout type debuff when oceanman dorwned collision check
             public void DarkWaters()
             {
-                if (LTSE) return;
+                if (LL) return;
 
                 if (Player.whoAmI != Main.myPlayer) return;
 
-                if (Player.OceanMan() && LuneWoL.LWoLServerConfig.DarkWaters && LuneWoL.LWoLServerConfig.DepthPressureMode > 0)
+                var Config = LuneWoL.LWoLServerConfig.WaterRelated;
+
+                if (Player.OceanMan() && Config.DarkWaters && Config.DepthPressureMode > 0)
                 {
                     Player.LibPlayer().LWaterEyes = true;
                 }
-                else if (Player.OceanMan() && LuneWoL.LWoLServerConfig.DarkWaters && LuneWoL.LWoLServerConfig.DepthPressureMode !> 0) 
+                else if (Player.OceanMan() && Config.DarkWaters && Config.DepthPressureMode !> 0) 
                 { 
                     Player.LibPlayer().LWaterEyes = true;
                     Lighting.GlobalBrightness *= 0.8f;

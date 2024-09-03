@@ -7,14 +7,16 @@ namespace LuneWoL.Common.WoLGlobalProjectiles
 {
     public partial class WoLGlobalProjectiles : GlobalProjectile
     {
-        public override void OnSpawn(Projectile projectile, IEntitySource source)
+        public override void OnSpawn(Projectile Projectile, IEntitySource source)
         {
-            if (LWoLPlayer.DmgPlrBcCrit && LuneWoL.LWoLServerConfig.CritFailMode != 0 && projectile.owner == Main.myPlayer)
+            var Config = LuneWoL.LWoLServerConfig.Main;
+
+            if (LWoLPlayer.DmgPlrBcCrit && Config.CritFailMode != 0 && Projectile.owner == Main.myPlayer)
             {
-                projectile.damage = 0;
-                projectile.penetrate = -1;
+                Projectile.damage = 0;
+                Projectile.penetrate = -1;
             }
-            base.OnSpawn(projectile, source);
+            base.OnSpawn(Projectile, source);
         }
     }
 }

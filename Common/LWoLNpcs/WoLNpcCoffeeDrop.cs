@@ -3,7 +3,6 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using LuneWoL.Content.Items;
-using Steamworks;
 
 namespace LuneWoL.Common.Npcs
 {
@@ -13,7 +12,7 @@ namespace LuneWoL.Common.Npcs
         {
             if (npc.type == NPCID.AngryTrapper || npc.type == NPCID.ManEater || npc.type == NPCID.Snatcher || npc.type == NPCID.BoneLee)
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CoffeeBeans>(), 4, 1, 5));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CoffeeBeans>(), 4, 1, 4));
             }
         }
     }

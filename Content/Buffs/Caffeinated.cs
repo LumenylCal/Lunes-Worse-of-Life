@@ -9,7 +9,9 @@ namespace LuneWoL.Content.Buffs
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return LuneWoL.LWoLServerConfig.DarkerNights;
+            var main = LuneWoL.LWoLServerConfig.Main;
+
+            return main.DarkerNights;
         }
         public override string Texture => "LuneWoL/Assets/Images/Buffs/Caffeinated";
 

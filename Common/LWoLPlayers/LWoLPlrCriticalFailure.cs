@@ -17,7 +17,9 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public void CritFail(Player player, NPC npc)
         {
-            if (LuneWoL.LWoLServerConfig.CritFailMode == 1 || LuneWoL.LWoLServerConfig.CritFailMode == 2)
+            var Config = LuneWoL.LWoLServerConfig.Main;
+
+            if (Config.CritFailMode == 1 || Config.CritFailMode == 2)
             {
                 int normalCritChance = (int)player.GetTotalCritChance(DamageClass.Generic);
 
@@ -28,7 +30,7 @@ namespace LuneWoL.Common.LWoLPlayers
                     IsCritFail = true;
                 }
             }
-            else if (LuneWoL.LWoLServerConfig.CritFailMode == 3 || LuneWoL.LWoLServerConfig.CritFailMode == 4)
+            else if (Config.CritFailMode == 3 || Config.CritFailMode == 4)
             {
                 int chanceoffail = Main.rand.Next(100 + 1);
 
@@ -41,13 +43,15 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public void CritFailDamage(Player player)
         {
-            if (LuneWoL.LWoLServerConfig.CritFailMode == 0) return;
+            var Config = LuneWoL.LWoLServerConfig.Main;
 
-            if (player.whoAmI == Main.myPlayer && IsCritFail && (LuneWoL.LWoLServerConfig.CritFailMode == 1 || LuneWoL.LWoLServerConfig.CritFailMode == 3))
+            if (Config.CritFailMode == 0) return;
+
+            if (player.whoAmI == Main.myPlayer && IsCritFail && (Config.CritFailMode == 1 || Config.CritFailMode == 3))
             {
                 player.Hurt(PlayerDeathReason.ByCustomReason(LuneLibUtils.GetText("Status.Death.FailedCrit" + Main.rand.Next(1, 5 + 1)).Format(Player.name)), AplyDmgAmt, 0);
             }
-            if (player.whoAmI == Main.myPlayer && IsCritFail && LuneWoL.LWoLServerConfig.CritFailMode > 0)
+            if (player.whoAmI == Main.myPlayer && IsCritFail && Config.CritFailMode > 0)
             {
                 WaitUntilZero();
             }

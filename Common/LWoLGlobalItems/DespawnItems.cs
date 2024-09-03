@@ -8,12 +8,15 @@ namespace LuneWoL.Common.LWoLGlobalItems
 {
     public partial class WoLGlobalItems : GlobalItem
     {
+
         private int DustSpawnCanYN;
-        private int Tajmer = LuneWoL.LWoLServerConfig.DespawnItemsTimer * 60;
+        private int Tajmer = LuneWoL.LWoLServerConfig.Misc.DespawnItemsTimer * 60;
         private bool a = true;
         private void DespawnItemsAfterTime(Item item)
         {
-            if (LuneWoL.LWoLServerConfig.DespawnItemsTimer > -1)
+            var Config = LuneWoL.LWoLServerConfig.Misc;
+
+            if (Config.DespawnItemsTimer > -1)
             {            
                 if (Tajmer > 0)
                 {
@@ -21,7 +24,7 @@ namespace LuneWoL.Common.LWoLGlobalItems
                 }
                 else if (Tajmer <= 0)
                 {
-                    Tajmer = LuneWoL.LWoLServerConfig.DespawnItemsTimer * 60;
+                    Tajmer = Config.DespawnItemsTimer * 60;
                 }
 
 
@@ -39,7 +42,9 @@ namespace LuneWoL.Common.LWoLGlobalItems
         }
         private void DustyDespawn(Item item)
         {
-            if (LuneWoL.LWoLServerConfig.DespawnItemsTimer > -1)
+            var Config = LuneWoL.LWoLServerConfig.Misc;
+
+            if (Config.DespawnItemsTimer > -1)
             {
                 for (int i = 0; i < 30; i++)
                 {

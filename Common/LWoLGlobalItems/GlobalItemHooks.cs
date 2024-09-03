@@ -1,4 +1,5 @@
 ﻿using LuneWoL.Common.LWoLPlayers;
+using LuneWoL.Content.Buffs;
 using LuneWoL.Content.Items;
 using Microsoft.Xna.Framework;
 using System;
@@ -13,44 +14,41 @@ namespace LuneWoL.Common.LWoLGlobalItems
 {
     public partial class WoLGlobalItems : GlobalItem
     {
-        private bool DrinkingCoffeeCanQuationMark = true;
+        public static bool DrinkingCoffeeCanQuationMark = true;
+        public static bool c = true;
 
         public override bool InstancePerEntity => true;
 
-        public override void AddRecipes()
-        {
-            AddCoffee();
-        }
-
         public override bool? UseItem(Item item, Player player)
         {
+            var main = LuneWoL.LWoLServerConfig.Main;
+
             #region coffee
-            if (LuneWoL.LWoLServerConfig.DarkerNights)
+            if (main.DarkerNights)
             {
-                if (player.whoAmI == Main.myPlayer)
+                if (item.type == ItemID.CoffeeCup && c)
                 {
-                    if (player.dead)
-                    {
-                        DrinkingCoffeeCanQuationMark = true;
-                    }
-                    CanConsumeMoreCoffee(); 
-                }
-                if (item.type == ItemID.CoffeeCup)
-                {
+                    item.buffTime = 1;
                     Caffeinated(player);
+                    if (player.whoAmI == Main.myPlayer)
+                    {
+                        c = false;
+                        LalalalalaCanthearyou = 0;
+                    }
                 }
             }
             #endregion
 
-            if (player.whoAmI == Main.myPlayer && LuneWoL.LWoLServerConfig.CritFailMode != 0 && LWoLPlayer.IsCritFail)
+            if (player.whoAmI == Main.myPlayer && main.CritFailMode != 0 && LWoLPlayer.IsCritFail)
             {
-                if (LuneWoL.LWoLServerConfig.CritFailMode == 1)
+                if (main.CritFailMode == 1)
                 {
                     LWoLPlayer.AplyDmgAmt = player.GetWeaponDamage(item);
                 }
 
                 LWoLPlayer.DmgPlrBcCrit = true;
             }
+
             //if (LuneWoL.LWoLServerConfig.ExplosiveGuns)
             //{
             //    if (item.DamageType == DamageClass.Ranged)
@@ -72,12 +70,14 @@ namespace LuneWoL.Common.LWoLGlobalItems
 
         public override bool CanUseItem(Item item, Player player)
         {
+            var main = LuneWoL.LWoLServerConfig.Main;
+
             #region coffee
-            if (LuneWoL.LWoLServerConfig.DarkerNights)
+            if (main.DarkerNights)
             {
-                if (item.type == ItemID.CoffeeCup)
+                if (player.whoAmI == Main.myPlayer && item.type == ItemID.CoffeeCup)
                 {
-                    if (player.whoAmI == Main.myPlayer && DrinkingCoffeeCanQuationMark)
+                    if (DrinkingCoffeeCanQuationMark)
                     {
                         MessageThing(item, player);
                     }
@@ -93,11 +93,15 @@ namespace LuneWoL.Common.LWoLGlobalItems
             NoAccessories(item);
 
             NoReusing(item);
+
+            Stackables(item);
         }
 
         public override void PostUpdate(Item item)
         {
-            if (LuneWoL.LWoLServerConfig.DespawnItemsTimer >= -1)
+            var misc = LuneWoL.LWoLServerConfig.Misc;
+
+            if (misc.DespawnItemsTimer >= -1)
             {
                 DespawnItemsAfterTime(item);
             }

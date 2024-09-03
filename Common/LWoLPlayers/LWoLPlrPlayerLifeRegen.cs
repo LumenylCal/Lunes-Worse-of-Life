@@ -26,7 +26,7 @@ namespace LuneWoL.Common.LWoLPlayers
 
             ApplyDoTDebuff(L.LibPlayer().BoilFreeze, 15, false);
 
-            ApplyDoTDebuff(L.LibPlayer().depthwaterPressure, L.LibPlayer().currentDepthPressure, LTSE);
+            ApplyDoTDebuff(L.LibPlayer().depthwaterPressure, L.LibPlayer().currentDepthPressure, LL);
 
             ApplyDoTDebuff(L.LibPlayer().BlizzardFrozen, 50, L.buffImmune[BuffID.Frozen]);
 

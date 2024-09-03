@@ -7,7 +7,9 @@ namespace LuneWoL.Common.LWoLGlobalItems
     {
         public void NoReusing(Item item)
         {
-            if (LuneWoL.LWoLServerConfig.DisableAutoReuse)
+            var equipment = LuneWoL.LWoLServerConfig.Equipment;
+
+            if (equipment.DisableAutoReuse)
             item.autoReuse = false;
         }
     }

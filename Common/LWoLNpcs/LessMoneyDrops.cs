@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+using tModPorter;
 
 namespace LuneWoL.Common.Npcs
 {
@@ -7,17 +8,21 @@ namespace LuneWoL.Common.Npcs
     {
         private void LessMoneyDrops(NPC npc)
         {
-            if (LuneWoL.LWoLServerConfig.NoMoneh == 1) return;
+            var Config = LuneWoL.LWoLServerConfig.NPCs;
 
-            npc.value = (npc.value * LuneWoL.LWoLServerConfig.NoMoneh);
+            if (Config.NoMoneh == 1) return;
+
+            npc.value = (npc.value * Config.NoMoneh);
         }
         private void NeverGoldEnough(NPC npc)
         {
-            if (LuneWoL.LWoLServerConfig.NeverGoldEnough) return;
+            var Config = LuneWoL.LWoLServerConfig.NPCs;
 
-            if (npc.value > 1600 && LuneWoL.LWoLServerConfig.NoMoneh != 1)
+            if (Config.NeverGoldEnough) return;
+
+            if (npc.value > 1600 && Config.NoMoneh != 1)
             {
-                npc.value = (1600 * LuneWoL.LWoLServerConfig.NoMoneh);
+                npc.value = (1600 * Config.NoMoneh);
             }
             else if (npc.value > 1600)
             {

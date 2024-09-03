@@ -1,4 +1,5 @@
 ﻿using LuneLib.Utilities;
+using LuneWoL.Core.Config;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Events;
@@ -13,7 +14,9 @@ namespace LuneWoL.PressureCheckFolder.Mode2
     {
         public override void PostUpdateMiscEffects()
         {
-            if (Player.whoAmI == Main.myPlayer && LuneWoL.LWoLServerConfig.DepthPressureMode > 0)
+            var Config = LuneWoL.LWoLServerConfig.WaterRelated;
+
+            if (Player.whoAmI == Main.myPlayer && Config.DepthPressureMode == 2)
             {
                 CheckWaterDepth();
 
@@ -25,13 +28,15 @@ namespace LuneWoL.PressureCheckFolder.Mode2
         }
         public override void PostUpdateEquips()
         {
-            if (!LTSE && Player.whoAmI == Main.myPlayer && LP.OceanMan() && LuneWoL.LWoLServerConfig.DepthPressureMode > 0)
+            var Config = LuneWoL.LWoLServerConfig.WaterRelated;
+
+            if (!LL && Player.whoAmI == Main.myPlayer && LP.OceanMan() && Config.DepthPressureMode == 2)
             {
                 BreathChecker();
                 DamageChecker();
             }
 
-            if (Player.whoAmI == Main.myPlayer && LuneWoL.LWoLServerConfig.DepthPressureMode > 0)
+            if (Player.whoAmI == Main.myPlayer && Config.DepthPressureMode == 2)
             {            
                 MD();
                 RD();
@@ -45,7 +50,9 @@ namespace LuneWoL.PressureCheckFolder.Mode2
 
         public override void PostUpdate()
         {
-            if (Player.LibPlayer().LWaterEyes && Player.whoAmI == Main.myPlayer && LuneWoL.LWoLServerConfig.DepthPressureMode > 0)
+            var Config = LuneWoL.LWoLServerConfig.WaterRelated;
+
+            if (Player.LibPlayer().LWaterEyes && Player.whoAmI == Main.myPlayer && Config.DepthPressureMode == 2)
             {
                 float value = 0f;
                 float amount = 0.1f;
@@ -59,12 +66,12 @@ namespace LuneWoL.PressureCheckFolder.Mode2
 
             float reversedLDD = (1 - LWoLDepthUtils.ModeTwo.lDD);
             float clampedLDD = MathHelper.Clamp(reversedLDD, 0.5f, 1f);
-            if (LP.LibPlayer().LWaterEyes && LuneWoL.LWoLServerConfig.DepthPressureMode > 0 && Player.whoAmI == Main.myPlayer)
+            if (LP.LibPlayer().LWaterEyes && Config.DepthPressureMode == 2 && Player.whoAmI == Main.myPlayer)
             {
                 Lighting.GlobalBrightness *= clampedLDD;
             }
 
-            if (LuneLib.LuneLib.debug.DebugMessages && Player.whoAmI == Main.myPlayer && LuneWoL.LWoLServerConfig.DepthPressureMode > 0)
+            if (LuneLib.LuneLib.debug.DebugMessages && Player.whoAmI == Main.myPlayer && Config.DepthPressureMode == 2)
             {
                 Main.NewText($"MD = {mD}, RD = {rD}, RDD = {rDD}, CDP = {Player.LibPlayer().currentDepthPressure}, LDD = {lDD}");
             }

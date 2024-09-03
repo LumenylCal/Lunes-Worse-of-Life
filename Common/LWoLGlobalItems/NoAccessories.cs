@@ -9,7 +9,9 @@ namespace LuneWoL.Common.LWoLGlobalItems
     {
         public void NoAccessories(Item item)
         {
-            if (!LuneWoL.LWoLServerConfig.NoAccessories) return;
+            var equipment = LuneWoL.LWoLServerConfig.Equipment;
+
+            if (!equipment.NoAccessories) return;
 
             if (!item.vanity)
             {

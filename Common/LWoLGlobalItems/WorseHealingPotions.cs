@@ -7,9 +7,11 @@ namespace LuneWoL.Common.LWoLGlobalItems
     {
         public override void GetHealLife(Item item, Player player, bool quickHeal, ref int healValue)
         {
-            if (LuneWoL.LWoLServerConfig.HealingPotionBadPercent > 0 && LuneWoL.LWoLServerConfig.HealingPotionBadPercent < 100)
+            var buffs = LuneWoL.LWoLServerConfig.BuffsAndDebuffs;
+
+            if (buffs.HealingPotionBadPercent > 0 && buffs.HealingPotionBadPercent < 100)
             {
-                float max = LuneWoL.LWoLServerConfig.HealingPotionBadPercent;
+                float max = buffs.HealingPotionBadPercent;
 
                 float clampthethinging = max / 100;
 
@@ -19,7 +21,7 @@ namespace LuneWoL.Common.LWoLGlobalItems
 
                 base.GetHealLife(item, player, quickHeal, ref healValue);
             }
-            else if (LuneWoL.LWoLServerConfig.HealingPotionBadPercent == 0)
+            else if (buffs.HealingPotionBadPercent == 0 || buffs.HealingPotionBadPercent == 1)
             {
                 healValue = 0;
             }
