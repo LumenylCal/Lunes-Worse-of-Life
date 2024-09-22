@@ -1,6 +1,5 @@
 ﻿using Mono.Cecil.Cil;
 using MonoMod.Cil;
-using System;
 using Terraria;
 
 using static LuneLib.Utilities.LuneLibUtils;

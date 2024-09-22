@@ -1,9 +1,6 @@
-﻿using Terraria.DataStructures;
-using Terraria.ModLoader;
+﻿using LuneLib.Utilities;
 using Terraria;
-
-using LuneLib.Utilities;
-
+using Terraria.ModLoader;
 using static LuneLib.Utilities.LuneLibUtils;
 using static LuneWoL.PressureCheckFolder.LWoLDepthUtils;
 

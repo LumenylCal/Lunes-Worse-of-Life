@@ -1,7 +1,13 @@
-so you know how terraria has a crap ton of quality of life mods? yeah i thought why not make it worse because i hate myself
+Makes your Terraria just a little bit worse to play...
 
 changelog (all are config options):
 See the changelog tab on this steam item.
+
+Everything is disabled by default.
+
+Credits:
+Gamma_sol: Artist
+Lune: Programmer
 
 Please join my discord!
 Discord: https://discord.com/invite/FwmGf6vBu2

@@ -10,7 +10,7 @@ namespace LuneWoL.Common.LWoLGlobalItems
             var equipment = LuneWoL.LWoLServerConfig.Equipment;
 
             if (equipment.DisableAutoReuse)
-            item.autoReuse = false;
+                item.autoReuse = false;
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using LuneLib.Utilities;
-using LuneWoL.Core.Config;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Events;
@@ -37,7 +36,7 @@ namespace LuneWoL.PressureCheckFolder.Mode2
             }
 
             if (Player.whoAmI == Main.myPlayer && Config.DepthPressureMode == 2)
-            {            
+            {
                 MD();
                 RD();
                 RDD();

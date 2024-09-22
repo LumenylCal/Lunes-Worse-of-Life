@@ -1,7 +1,4 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-
-namespace LuneWoL
+﻿namespace LuneWoL
 {
     public static class LWoLUtils
     {

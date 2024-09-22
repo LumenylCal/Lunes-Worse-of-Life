@@ -1,9 +1,8 @@
-﻿using System.ComponentModel;
-using Terraria.ModLoader.Config;
+﻿using Terraria.ModLoader.Config;
 
 namespace LuneWoL.Core.Config
 {
-    [BackgroundColor(15, 25, 50)]
+    [BackgroundColor(15, 25, 50, 255)]
     public class LWoLServerStatConfig : ModConfig
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
@@ -28,15 +27,15 @@ namespace LuneWoL.Core.Config
 
             [BackgroundColor(85, 130, 140, 255)]
             [SliderColor(85, 130, 140, 255)]
-            [Slider]
-            [Range(1, 100)]
-            public int DefensePercent;
+            [Range(1f, 100f)]
+            [Increment(1f)]
+            public float DefensePercent;
 
             [BackgroundColor(85, 130, 140, 255)]
             [SliderColor(85, 130, 140, 255)]
-            [Slider]
-            [Range(1, 100)]
-            public int EndurancePercent;
+            [Range(1f, 100f)]
+            [Increment(1f)]
+            public float EndurancePercent;
 
             #endregion
 
@@ -44,21 +43,21 @@ namespace LuneWoL.Core.Config
 
             [BackgroundColor(85, 130, 140, 255)]
             [SliderColor(85, 130, 140, 255)]
-            [Slider]
-            [Range(1, 100)]
-            public int DamagePercent;
+            [Range(1f, 100f)]
+            [Increment(1f)]
+            public float DamagePercent;
 
             [BackgroundColor(85, 130, 140, 255)]
             [SliderColor(85, 130, 140, 255)]
-            [Slider]
-            [Range(1, 100)]
-            public int ArmorPenetrationPercent;
+            [Range(1f, 100f)]
+            [Increment(1f)]
+            public float ArmorPenetrationPercent;
 
             [BackgroundColor(85, 130, 140, 255)]
             [SliderColor(85, 130, 140, 255)]
-            [Slider]
-            [Range(1, 100)]
-            public int AttackSpeedPercent;
+            [Range(1f, 100f)]
+            [Increment(1f)]
+            public float AttackSpeedPercent;
 
             #endregion
 
@@ -78,9 +77,9 @@ namespace LuneWoL.Core.Config
 
             [BackgroundColor(85, 130, 140, 255)]
             [SliderColor(85, 130, 140, 255)]
-            [Slider]
-            [Range(1, 100)]
-            public int ManaCostPercent;
+            [Range(1f, 100f)]
+            [Increment(1f)]
+            public float ManaCostPercent;
 
             #endregion
 
@@ -104,15 +103,15 @@ namespace LuneWoL.Core.Config
 
             [BackgroundColor(85, 130, 140, 255)]
             [SliderColor(85, 130, 140, 255)]
-            [Slider]
-            [Range(1, 100)]
-            public int MoveSpeedPercent;
+            [Range(1f, 100f)]
+            [Increment(1f)]
+            public float MoveSpeedPercent;
 
             [BackgroundColor(85, 130, 140, 255)]
             [SliderColor(85, 130, 140, 255)]
-            [Slider]
-            [Range(1, 100)]
-            public int JumpSpeedPercent;
+            [Range(1f, 100f)]
+            [Increment(1f)]
+            public float JumpSpeedPercent;
 
             [BackgroundColor(85, 130, 140, 255)]
             [SliderColor(85, 130, 140, 255)]
@@ -132,27 +131,21 @@ namespace LuneWoL.Core.Config
 
             [BackgroundColor(85, 130, 140, 255)]
             [SliderColor(85, 130, 140, 255)]
-            [Slider]
-            [Range(100, 200)]
-            public int PickSpeedPercent;
+            [Range(1f, 100f)]
+            [Increment(1f)]
+            public float PickSpeedPercent;
 
             [BackgroundColor(85, 130, 140, 255)]
             [SliderColor(85, 130, 140, 255)]
-            [Slider]
-            [Range(1, 100)]
-            public int BlockRangePercent;
+            [Range(1f, 100f)]
+            [Increment(1f)]
+            public float TileSpeedPercent;
 
             [BackgroundColor(85, 130, 140, 255)]
             [SliderColor(85, 130, 140, 255)]
-            [Slider]
-            [Range(100, 200)]
-            public int TileSpeedPercent;
-
-            [BackgroundColor(85, 130, 140, 255)]
-            [SliderColor(85, 130, 140, 255)]
-            [Slider]
-            [Range(100, 200)]
-            public int WallSpeedPercent;
+            [Range(1f, 100f)]
+            [Increment(1f)]
+            public float WallSpeedPercent;
 
             [BackgroundColor(85, 130, 140, 255)]
             public bool DisablePlayerStatChanges;
@@ -182,10 +175,9 @@ namespace LuneWoL.Core.Config
                 WingTimePercent = 100;
 
                 PickSpeedPercent = 100;
-                BlockRangePercent = 100;
                 TileSpeedPercent = 100;
                 WallSpeedPercent = 100;
-                
+
                 DisablePlayerStatChanges = true;
             }
         }

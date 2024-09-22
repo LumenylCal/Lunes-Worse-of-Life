@@ -29,26 +29,26 @@ namespace LuneWoL.Common.LWoLPlayers
             }
             if (plrConfig.DefensePercent != 100)
             {
-                Player.statDefense = Player.statDefense * plrConfig.DefensePercent / 100;
+                Player.statDefense *= (plrConfig.DefensePercent / 100);
             }
             if (plrConfig.EndurancePercent != 100)
             {
-                Player.endurance = Player.endurance * plrConfig.EndurancePercent / 100;
+                Player.endurance *= (plrConfig.EndurancePercent / 100);
             }
             #endregion
 
             #region Offense
             if (plrConfig.DamagePercent != 100)
             {
-                Player.GetDamage(DamageClass.Generic).Base = Player.GetDamage(DamageClass.Generic).Base * plrConfig.DamagePercent / 100;
+                Player.GetDamage(DamageClass.Generic) *= (plrConfig.DamagePercent / 100);
             }
             if (plrConfig.ArmorPenetrationPercent != 100)
             {
-                Player.GetArmorPenetration(DamageClass.Generic) = Player.GetArmorPenetration(DamageClass.Generic) * plrConfig.ArmorPenetrationPercent / 100;
+                Player.GetArmorPenetration(DamageClass.Generic) *= (plrConfig.ArmorPenetrationPercent / 100);
             }
             if (plrConfig.AttackSpeedPercent != 100)
             {
-                Player.GetAttackSpeed(DamageClass.Generic) = Player.GetAttackSpeed(DamageClass.Generic) * (plrConfig.AttackSpeedPercent / 100f);
+                Player.GetAttackSpeed(DamageClass.Generic) *= (plrConfig.AttackSpeedPercent / 100f);
             }
             #endregion
 
@@ -63,7 +63,7 @@ namespace LuneWoL.Common.LWoLPlayers
             }
             if (plrConfig.ManaCostPercent != 100)
             {
-                Player.manaCost = Player.manaCost * plrConfig.ManaCostPercent / 100;
+                Player.manaCost /= (plrConfig.ManaCostPercent / 100);
             }
             #endregion
 
@@ -81,11 +81,11 @@ namespace LuneWoL.Common.LWoLPlayers
             #region Mobility
             if (plrConfig.MoveSpeedPercent != 100)
             {
-                Player.moveSpeed = Player.moveSpeed * plrConfig.MoveSpeedPercent / 100;
+                Player.moveSpeed *= (plrConfig.MoveSpeedPercent / 100);
             }
             if (plrConfig.JumpSpeedPercent != 100)
             {
-                Player.jumpSpeed = Player.jumpSpeed * plrConfig.JumpSpeedPercent / 100;
+                Player.jumpSpeed *= (plrConfig.JumpSpeedPercent / 100);
             }
             if (plrConfig.JumpHeightPercent != 100)
             {
@@ -100,19 +100,15 @@ namespace LuneWoL.Common.LWoLPlayers
             #region World Shaping
             if (plrConfig.PickSpeedPercent != 100)
             {
-                Player.pickSpeed = Player.pickSpeed * plrConfig.PickSpeedPercent / 100;
-            }
-            if (plrConfig.BlockRangePercent != 100)
-            {
-                Player.blockRange = Player.blockRange * plrConfig.BlockRangePercent / 100;
+                Player.pickSpeed /= (plrConfig.PickSpeedPercent / 100);
             }
             if (plrConfig.TileSpeedPercent != 100)
             {
-                Player.tileSpeed = Player.tileSpeed * plrConfig.TileSpeedPercent / 100;
+                Player.tileSpeed *= (plrConfig.TileSpeedPercent / 100);
             }
             if (plrConfig.WallSpeedPercent != 100)
             {
-                Player.wallSpeed = Player.wallSpeed * plrConfig.WallSpeedPercent / 100;
+                Player.wallSpeed *= (plrConfig.WallSpeedPercent / 100);
             }
             #endregion
         }

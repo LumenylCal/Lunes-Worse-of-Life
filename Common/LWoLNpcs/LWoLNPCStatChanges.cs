@@ -1,13 +1,10 @@
-using FullSerializer;
-using System;
 using Terraria;
 using Terraria.ModLoader;
-using tModPorter;
 using static LuneWoL.LuneWoL;
 
 namespace LuneWoL.Common.LWoLNpcs
 {
-    public class NpcStatChanges : GlobalNPC
+    public class LWoLNPCStatChanges : GlobalNPC
     {
         public override bool InstancePerEntity => true;
 

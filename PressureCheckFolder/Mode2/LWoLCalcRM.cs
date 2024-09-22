@@ -1,10 +1,7 @@
-﻿using System;
-
+﻿using LuneLib.Utilities;
+using System;
 using Terraria;
 using Terraria.ModLoader;
-
-using LuneLib.Utilities;
-
 using static LuneLib.Utilities.LuneLibUtils;
 using static LuneWoL.PressureCheckFolder.LWoLDepthUtils;
 
@@ -98,7 +95,7 @@ namespace LuneWoL.PressureCheckFolder.Mode2
         {
             return tDC = Math.Clamp(rDD, 0, ModeTwo.mD);
         }
-        
+
         public float TD() // Tile Difference
         {
             return tD = (int)(LP.position.Y - ModeTwo.EntryPoint.Y) / 16;
@@ -108,7 +105,7 @@ namespace LuneWoL.PressureCheckFolder.Mode2
         {
             return pDTA = ModeTwo.rDD - ModeTwo.mD;
         }
-        
+
         public float LDD() // Light Depth Difference
         {
             return lDD = ModeTwo.tDC / ModeTwo.mD;

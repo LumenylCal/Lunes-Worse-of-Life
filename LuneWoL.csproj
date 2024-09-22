@@ -31,7 +31,7 @@
 	  <Folder Include="Assets\Images\Buffs\DOT\" />
 	  <Folder Include="Assets\Images\Buffs\Debuffs\" />
 	  <Folder Include="Content\Dusts\" />
-	  <Folder Include="Experiments\NPCStats\" />
+	  <Folder Include="Experiments\" />
 	</ItemGroup>
 
 </Project>

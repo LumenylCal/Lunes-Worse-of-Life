@@ -19,6 +19,11 @@ LWoLServerConfig: {
 		Tooltip: ""
 	}
 
+	Recipes: {
+		Label: Recipes
+		Tooltip: ""
+	}
+
 	NPCs: {
 		Label: NPCs
 		Tooltip: ""
@@ -206,6 +211,11 @@ MainDented: {
 	}
 
 	Tooltip: ""
+
+	DeathPenaltyMode: {
+		Label: Death Penalty Mode
+		Tooltip: ""
+	}
 }
 
 EquipmentDented: {
@@ -250,6 +260,37 @@ EquipmentDented: {
 		Tooltip:
 			'''
 			Nerfs weapon and tool reforges.
+
+			Suggested by `Lune`.
+			'''
+	}
+}
+
+RecipesDented: {
+	Tooltip: ""
+
+	IgnoreStacksOfOne: {
+		Label: Ignore stacks of one
+		Tooltip:
+			'''
+			Disables changes on recipe items with stacks of 1.
+
+			Some mods recipes may become impossible to make in the same world if this is off...
+			*Cough* *Cough* SHPC Calamity mod *Cough*
+
+			Suggested by `Lune`.
+			'''
+	}
+
+	RecipePercent: {
+		Label: Recipe Ingredient Percentage
+		Tooltip:
+			'''
+			Lower values means more items are required.
+
+			50 means double the items needed
+
+			Set to 100 to disable.
 
 			Suggested by `Lune`.
 			'''

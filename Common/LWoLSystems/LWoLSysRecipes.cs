@@ -1,30 +1,12 @@
-﻿using LuneWoL.Content.Items;
+﻿using Terraria;
 using Terraria.ID;
-using Terraria;
 using Terraria.ModLoader;
-
-using static LuneLib.Utilities.LuneLibUtils;
 using static LuneLib.LuneLib;
 
 namespace LuneWoL.Common.LWoLSystems
 {
     public partial class LWoLSystem : ModSystem
     {
-        public static void AddCoffee()
-        {
-            var misc = LuneWoL.LWoLServerConfig.Misc;
-            var main = LuneWoL.LWoLServerConfig.Main;
-
-            if (misc.DisableWoLItems) return;
-            if (!main.DarkerNights) return;
-
-            Recipe.Create(ItemID.CoffeeCup, 1).
-                AddIngredient<CoffeeBeans>(1).
-                AddIngredient(ItemID.BottledWater, 1).
-                AddTile(TileID.CookingPots).
-            Register();
-        }
-
         public static void AddMusicBox()
         {
             if (instance.CalamityModLoaded) return;
@@ -35,6 +17,28 @@ namespace LuneWoL.Common.LWoLSystems
                 AddIngredient(ItemID.IronBar, 2).
                 AddTile(TileID.Tables).
             Register();
+        }
+
+        public void RecipeMulti()
+        {
+            var Config = LuneWoL.LWoLServerConfig.Recipes;
+
+            if (Config.RecipePercent == 100) return;
+
+            foreach (Recipe recipe in Main.recipe)
+            {
+                foreach (Item item in recipe.requiredItem)
+                {
+                    if (item.stack > 0 && !Config.IgnoreStacksOfOne)
+                    {
+                        item.stack = (int)(item.stack * (100f / Config.RecipePercent));
+                    }
+                    else if (item.stack > 1 && Config.IgnoreStacksOfOne)
+                    {
+                        item.stack = (int)(item.stack * (100f / Config.RecipePercent));
+                    }
+                }
+            }
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using InfernumMode.Core.ILEditingStuff;
-using LuneLib.Utilities;
+﻿using LuneLib.Utilities;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;

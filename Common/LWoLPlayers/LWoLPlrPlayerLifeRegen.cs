@@ -1,8 +1,7 @@
-﻿using Terraria.ModLoader;
-using Terraria.ID;
-
-using static LuneLib.Utilities.LuneLibUtils;
+﻿using Terraria.ID;
+using Terraria.ModLoader;
 using static LuneLib.Common.Players.LuneLibPlayer.LibPlayer;
+using static LuneLib.Utilities.LuneLibUtils;
 
 namespace LuneWoL.Common.LWoLPlayers
 {

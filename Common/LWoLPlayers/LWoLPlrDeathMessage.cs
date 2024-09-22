@@ -1,13 +1,11 @@
-﻿using Terraria.Audio;
+﻿using LuneLib.Utilities;
+using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
-using Terraria;
-
-using LuneLib.Utilities;
-
+using static LuneLib.Common.Players.LuneLibPlayer.LibPlayer;
 using static LuneLib.Utilities.LuneLibUtils;
 using static LuneWoL.PressureCheckFolder.LWoLDepthUtils;
-using static LuneLib.Common.Players.LuneLibPlayer.LibPlayer;
 
 
 namespace LuneWoL.Common.LWoLPlayers

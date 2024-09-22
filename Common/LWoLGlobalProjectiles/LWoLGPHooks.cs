@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace LuneWoL.Common.WoLGlobalProjectiles
 {
-    public partial class WoLGlobalProjectiles : GlobalProjectile
+    public partial class LWoLGPHooks : GlobalProjectile
     {
         public override void OnSpawn(Projectile Projectile, IEntitySource source)
         {

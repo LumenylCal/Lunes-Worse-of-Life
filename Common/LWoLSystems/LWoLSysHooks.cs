@@ -1,13 +1,10 @@
-﻿using Terraria.ModLoader;
-
-using static LuneLib.Utilities.LuneLibUtils;
+﻿using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
 
 namespace LuneWoL.Common.LWoLSystems
 {
     public partial class LWoLSystem : ModSystem
     {
-        public bool b = true;
-
         public override void PreUpdateInvasions()
         {
             LongerInvasions();
@@ -15,17 +12,17 @@ namespace LuneWoL.Common.LWoLSystems
 
         public override void AddRecipes()
         {
-            AddCoffee();
             AddMusicBox();
         }
 
-        public override void ModifyLightingBrightness(ref float scale)
+        public override void PostAddRecipes()
         {
-            if (L.LibPlayer().LNightEyes)
-            {
-                scale *= 0.8f;
-            }
-            base.ModifyLightingBrightness(ref scale);
+            RecipeMulti();
+        }
+
+        public override void ModifySunLightColor(ref Color tileColor, ref Color backgroundColor)
+        {
+            DarkerNightsSurfaceLight(ref tileColor, ref backgroundColor);
         }
     }
 }

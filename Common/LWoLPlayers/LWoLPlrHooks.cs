@@ -1,8 +1,6 @@
-﻿using LuneWoL.Core.Config;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
-
-using static LuneLib.Utilities.LuneLibUtils;
+using Terraria.ModLoader.IO;
 
 namespace LuneWoL.Common.LWoLPlayers
 {
@@ -14,12 +12,13 @@ namespace LuneWoL.Common.LWoLPlayers
         public override void OnEnterWorld()
         {
             EnterWorldMessage();
+        }
 
-            if (Player.whoAmI == Main.myPlayer)
-            {
-                LWoLGlobalItems.WoLGlobalItems.LalalalalaCanthearyou = 7200;
-            }
-
+        public override void OnRespawn()
+        {
+            ActualBrainrotCodeOnRespawn();
+            okback2();
+            THEBLACKONE();
         }
 
         public override void PostUpdateEquips()
@@ -51,8 +50,6 @@ namespace LuneWoL.Common.LWoLPlayers
             Thisissoevillmfao();
 
             DarkWaters();
-
-            DarkerNights();
         }
 
         public override void PostUpdateMiscEffects()
@@ -73,10 +70,8 @@ namespace LuneWoL.Common.LWoLPlayers
             {
                 CritFailDamage(Player);
             }
-            if (Player.whoAmI == Main.myPlayer)
-            {
-                LWoLGlobalItems.WoLGlobalItems.CanConsumeMoreCoffee();
-            }
+
+            uhghhhghhg();
 
             // https://steamcommunity.com/sharedfiles/filedetails/?id=2395507804
         }
@@ -91,13 +86,34 @@ namespace LuneWoL.Common.LWoLPlayers
             }
         }
 
-        public override void OnRespawn()
+        public override void ModifyMaxStats(out StatModifier health, out StatModifier mana)
         {
-            if (Player.whoAmI == Main.myPlayer)
-            {
-               LWoLGlobalItems.WoLGlobalItems.LalalalalaCanthearyou = 7200;
-               LWoLGlobalItems.WoLGlobalItems.UrMomIsSoSkibidiIBangedHerLastNight = 0;
-            }
+            ActualBrainrotCodeFuckThisImTired(out health, out mana);
+        }
+
+        public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
+        {
+            syncthething(toWho, fromWho, newPlayer);
+        }
+
+        public override void CopyClientState(ModPlayer targetCopy)
+        {
+            copytheclientthing(targetCopy);
+        }
+
+        public override void SendClientChanges(ModPlayer clientPlayer)
+        {
+            sendtheclientthing(clientPlayer);
+        }
+
+        public override void SaveData(TagCompound tag)
+        {
+            ActualBrainrotCodeTHISAGUST12TH2025(tag);
+        }
+
+        public override void LoadData(TagCompound tag)
+        {
+            ActualBrainrotCodebutcooler(tag);
         }
 
         #endregion

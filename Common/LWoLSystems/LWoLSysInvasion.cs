@@ -5,6 +5,8 @@ namespace LuneWoL.Common.LWoLSystems
 {
     public partial class LWoLSystem : ModSystem
     {
+        public bool b = true;
+
         public void LongerInvasions()
         {
             var Config = LuneWoL.LWoLServerConfig.NPCs;
@@ -24,15 +26,6 @@ namespace LuneWoL.Common.LWoLSystems
                 Main.invasionProgressMax /= Config.InvasionMultiplier;
                 NPC.waveNumber /= Config.InvasionMultiplier;
                 b = true;
-            }
-
-            if (Config.InvasionsAnywhere && Main.invasionType != 0)
-            {
-                Main.invasionProgressNearInvasion = true;
-            }
-            else if (Config.InvasionsAnywhere && Main.invasionType == 0)
-            {
-                Main.invasionProgressNearInvasion = false;
             }
         }
     }

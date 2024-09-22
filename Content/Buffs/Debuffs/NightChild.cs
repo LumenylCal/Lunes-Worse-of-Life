@@ -4,7 +4,7 @@ using static LuneLib.Utilities.LuneLibUtils;
 
 namespace LuneWoL.Content.Buffs.Debuffs
 {
-    public class NightChild : ModBuff 
+    public class NightChild : ModBuff
     {
         public override string Texture => "LuneWoL/Assets/Images/Buffs/Debuffs/NightChild";
 

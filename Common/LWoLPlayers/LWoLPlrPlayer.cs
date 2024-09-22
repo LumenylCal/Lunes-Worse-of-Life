@@ -1,22 +1,19 @@
-﻿using System;
-
-using Microsoft.Xna.Framework;
-
-using Terraria;
-using Terraria.ID;
-using Terraria.GameContent.Events;
-
-using Terraria.ModLoader;
-
-using LuneLib.Utilities;
-
-using static LuneLib.Utilities.LuneLibUtils;
-using static LuneLib.Common.Players.LuneLibPlayer.LibPlayer;
-
-using LuneWoL.Content.Buffs;
+﻿using LuneLib.Utilities;
 using LuneWoL.Content.Buffs.Debuffs;
 using LuneWoL.Content.Buffs.DOT;
-using static LuneWoL.Common.LWoLPlayers.LWoLPlayer;
+using Microsoft.Xna.Framework;
+using Stubble.Core.Classes;
+using System;
+using System.IO;
+using Terraria;
+using Terraria.GameContent.Events;
+using Terraria.Graphics.CameraModifiers;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
+using static LuneLib.Common.Players.LuneLibPlayer.LibPlayer;
+using static LuneLib.Utilities.LuneLibUtils;
 using static LuneWoL.LuneWoL;
 
 namespace LuneWoL.Common.LWoLPlayers
@@ -218,7 +215,7 @@ namespace LuneWoL.Common.LWoLPlayers
                 Player.blackout = true;
                 Player.LibPlayer().LStormEyeCovered = true;
             }
-            else 
+            else
             {
                 Player.LibPlayer().LStormEyeCovered = false;
             }
@@ -261,61 +258,61 @@ namespace LuneWoL.Common.LWoLPlayers
 
         #region Cold Make Cold Brrrrr
 
-            // cold env give chilled debuff?
-            public void ColdMakeColdBrrrrr()
+        // cold env give chilled debuff?
+        public void ColdMakeColdBrrrrr()
+        {
+            var Config = LWoLServerConfig.BiomeSpecific;
+
+            if (!Config.Chilly) return;
+
+            if (WearingFullEskimo) return;
+
+            if (Player.ZoneSnow && !Player.HasBuff(BuffID.Campfire) && !Player.behindBackWall && !Player.HasBuff(BuffID.OnFire) && !Player.HasBuff(BuffID.Burning))
             {
-                var Config = LWoLServerConfig.BiomeSpecific;
-
-                if (!Config.Chilly) return;
-
-                if (WearingFullEskimo) return;
-
-                if (Player.ZoneSnow && !Player.HasBuff(BuffID.Campfire) && !Player.behindBackWall && !Player.HasBuff(BuffID.OnFire) && !Player.HasBuff(BuffID.Burning))
-                {
-                    if (tundraChilledCounter < 0)
-                        tundraChilledCounter = 0;
-
-                    tundraChilledCounter += 1;
-
-                    if (tundraChilledCounter >= 180)
-                        tundraChilledCounter = 180;
-
-                    if (tundraChilledCounter >= 180)
-                    {
-                        L.LibPlayer().Chilly = true;
-                        Main.buffNoTimeDisplay[BuffID.Chilled] = true;
-                        Player.AddBuff(BuffID.Chilled, 180, true, false);
-                    }
-                }
-                else
-                {
+                if (tundraChilledCounter < 0)
                     tundraChilledCounter = 0;
-                    L.LibPlayer().Chilly = false;
+
+                tundraChilledCounter += 1;
+
+                if (tundraChilledCounter >= 180)
+                    tundraChilledCounter = 180;
+
+                if (tundraChilledCounter >= 180)
+                {
+                    L.LibPlayer().Chilly = true;
+                    Main.buffNoTimeDisplay[BuffID.Chilled] = true;
+                    Player.AddBuff(BuffID.Chilled, 180, true, false);
                 }
             }
+            else
+            {
+                tundraChilledCounter = 0;
+                L.LibPlayer().Chilly = false;
+            }
+        }
 
         #endregion
 
         #region EVIL NIGHT TIME BABY
 
-            // evil biomes are night time only?
-            public void Thisissoevillmfao()
+        // evil biomes are night time only?
+        public void Thisissoevillmfao()
+        {
+            var Config = LWoLServerConfig.BiomeSpecific;
+
+            if (!Main.dayTime) return;
+
+            if (!Config.NoEvilDayTime) return;
+
+            if (Player.ZoneCorrupt || Player.ZoneCrimson)
             {
-                var Config = LWoLServerConfig.BiomeSpecific;
-
-                if (!Main.dayTime) return;
-
-                if (!Config.NoEvilDayTime) return;
-
-                if (Player.ZoneCorrupt || Player.ZoneCrimson)
-                {
-                    L.LibPlayer().CrimtuptionzoneNight = true;
-                }
-                else
-                {
-                    L.LibPlayer().CrimtuptionzoneNight = false;
-                }
+                L.LibPlayer().CrimtuptionzoneNight = true;
             }
+            else
+            {
+                L.LibPlayer().CrimtuptionzoneNight = false;
+            }
+        }
 
         #endregion
 
@@ -326,15 +323,15 @@ namespace LuneWoL.Common.LWoLPlayers
             {
                 var Config = LWoLServerConfig.Main;
 
-                if (Config.WindArrows && Projectile.arrow && 
-                    (double)Projectile.Center.Y < Main.worldSurface * 16.0 
-                    && Main.tile[(int)Projectile.Center.X / 16, (int)Projectile.Center.Y / 16] != null 
-                    && Main.tile[(int)Projectile.Center.X / 16, (int)Projectile.Center.Y / 16].WallType == 0 
-                    && ((Projectile.velocity.X > 0f 
-                    && Main.windSpeedCurrent < 0f) 
-                    || (Projectile.velocity.X < 0f 
-                    && Main.windSpeedCurrent > 0f) 
-                    || Math.Abs(Projectile.velocity.X) < Math.Abs(Main.windSpeedCurrent * Main.windPhysicsStrength) * 180f) 
+                if (Config.WindArrows && Projectile.arrow &&
+                    (double)Projectile.Center.Y < Main.worldSurface * 16.0
+                    && Main.tile[(int)Projectile.Center.X / 16, (int)Projectile.Center.Y / 16] != null
+                    && Main.tile[(int)Projectile.Center.X / 16, (int)Projectile.Center.Y / 16].WallType == 0
+                    && ((Projectile.velocity.X > 0f
+                    && Main.windSpeedCurrent < 0f)
+                    || (Projectile.velocity.X < 0f
+                    && Main.windSpeedCurrent > 0f)
+                    || Math.Abs(Projectile.velocity.X) < Math.Abs(Main.windSpeedCurrent * Main.windPhysicsStrength) * 180f)
                     && Math.Abs(Projectile.velocity.X) < 16f)
                 {
                     Projectile.velocity.X += Main.windSpeedCurrent * Main.windPhysicsStrength;
@@ -343,30 +340,6 @@ namespace LuneWoL.Common.LWoLPlayers
                 base.PostAI(Projectile);
             }
         }
-
-        #endregion
-
-        #region DarkerNights
-
-            // giving players darkness during nights or even blackout
-            public void DarkerNights()
-            {
-                var Config = LWoLServerConfig.Main;
-
-                if (!Config.DarkerNights) return;
-
-                if (!Main.dayTime && !Player.HasBuff<Caffeinated>())
-                {
-                    Main.buffNoTimeDisplay[ModContent.BuffType<NightChild>()] = true;
-                    Player.AddBuff(ModContent.BuffType<NightChild>(), 60);
-
-                    Player.LibPlayer().LNightEyes = true;
-                }
-                else
-                {
-                    Player.LibPlayer().NightChild = false;
-                }
-            }
 
         #endregion
 
@@ -413,7 +386,7 @@ namespace LuneWoL.Common.LWoLPlayers
                 Player.maxMinions /= 4;
             }
         }
-        
+
         public void HeatExhaustionUpdRunSpeed()
         {
             if (HeatStrokeCounter >= 180)
@@ -427,33 +400,225 @@ namespace LuneWoL.Common.LWoLPlayers
 
         #region darker waters
 
-            // blackout type debuff when oceanman dorwned collision check
-            public void DarkWaters()
+        public void DarkWaters()
+        {
+            if (LL) return;
+
+            if (Player.whoAmI != Main.myPlayer) return;
+
+            var Config = LuneWoL.LWoLServerConfig.WaterRelated;
+
+            if (Player.OceanMan() && Config.DarkWaters && Config.DepthPressureMode > 0)
             {
-                if (LL) return;
-
-                if (Player.whoAmI != Main.myPlayer) return;
-
-                var Config = LuneWoL.LWoLServerConfig.WaterRelated;
-
-                if (Player.OceanMan() && Config.DarkWaters && Config.DepthPressureMode > 0)
-                {
-                    Player.LibPlayer().LWaterEyes = true;
-                }
-                else if (Player.OceanMan() && Config.DarkWaters && Config.DepthPressureMode !> 0) 
-                { 
-                    Player.LibPlayer().LWaterEyes = true;
-                    Lighting.GlobalBrightness *= 0.8f;
-                }
-                else
-                {
-                    Player.LibPlayer().LWaterEyes = false;
-                }
+                Player.LibPlayer().LWaterEyes = true;
             }
+            else if (Player.OceanMan() && Config.DarkWaters && Config.DepthPressureMode! > 0)
+            {
+                Player.LibPlayer().LWaterEyes = true;
+                Lighting.GlobalBrightness *= 0.8f;
+            }
+            else
+            {
+                Player.LibPlayer().LWaterEyes = false;
+            }
+        }
 
         #endregion
 
-        // (annoyinh to do) maybe penalties for dying such as reduced max hp just to be evil obviously in masochist config
+        #region asdasd
+        // maybe penalties for dying such as reduced max hp just to be evil obviously in masochist config
+        //im thinking adding how much life the player has lost and for each 20 lost ConsumedLifeCrystals-- yk???
+        //but only if the players health is <= 400 else if > 400 && < 500 ConsumedLifeFruit-- but only for each 5hp lost
+
+        public int hplosthuhhhhh;
+        public int bmananalosthuhhhhh;
+
+        public int JesusStopDyingMoron;
+        public int JesusStopDyingMoronPART2EVILDARKANDTWISTED;
+
+        public static bool AUURHGHRUGH = false;
+        public static bool AUURHGHRUGHpart2ofc = false;
+
+        public void okback2()
+        {
+            var Config = LuneWoL.LWoLServerConfig.Main;
+
+            if (Config.DeathPenaltyMode != 2) return;
+
+            if (Player.statLifeMax2 <= 400 && Player.statLifeMax2 > 100)
+            {
+                Player.ConsumedLifeCrystals--;
+            }
+            else if (Player.statLifeMax2 > 400 && Player.statLifeMax2 <= 500)
+            {
+                Player.ConsumedLifeFruit--;
+            }
+
+            if (Player.statManaMax2 <= 200 && Player.statManaMax2 >= 5)
+            {
+                Player.ConsumedManaCrystals--;
+            }
+        }
+        
+        public void THEBLACKONE()
+        {
+            var Config = LuneWoL.LWoLServerConfig.Main;
+
+            if (Config.DeathPenaltyMode != 3) return;
+
+            if (Player.statLifeMax2 <= 400 && Player.statLifeMax2 > 100)
+            {
+                Player.ConsumedLifeCrystals = 0;
+            }
+            else if (Player.statLifeMax2 > 400 && Player.statLifeMax2 <= 500)
+            {
+                Player.ConsumedLifeFruit = 0;
+            }
+
+            if (Player.statManaMax2 <= 200 && Player.statManaMax2 >= 5)
+            {
+                Player.ConsumedManaCrystals = 0;
+            }
+        }
+
+        public void ActualBrainrotCodeOnRespawn()
+        {
+            var Config = LuneWoL.LWoLServerConfig.Main;
+
+            if (Config.DeathPenaltyMode != 1) return;
+
+            hplosthuhhhhh += 5;
+            bmananalosthuhhhhh += 5;
+
+            if (Player.statLifeMax2 <= 500 && Player.statLifeMax2 > 20)
+            {
+                JesusStopDyingMoron++;
+            }
+            if (Player.statManaMax2 <= 200 && Player.statManaMax2 > 20)
+            {
+                JesusStopDyingMoronPART2EVILDARKANDTWISTED++;
+            }
+
+            if (hplosthuhhhhh >= 20 && Player.statLifeMax2 <= 400 && Player.statLifeMax2 > 100)
+            {
+                hplosthuhhhhh = 0;
+                JesusStopDyingMoron = 0;
+                Player.ConsumedLifeCrystals--;
+            }
+            else if (hplosthuhhhhh >= 5 && Player.statLifeMax2 > 400 && Player.statLifeMax2 <= 500)
+            {
+                hplosthuhhhhh = 0;
+                JesusStopDyingMoron = 0;
+                Player.ConsumedLifeFruit--;
+            }
+            
+            if (bmananalosthuhhhhh >= 20 && Player.statManaMax2 <= 200 && Player.statManaMax2 > 20)
+            {
+                bmananalosthuhhhhh = 0;
+                JesusStopDyingMoronPART2EVILDARKANDTWISTED = 0;
+                Player.ConsumedManaCrystals--;
+            }
+        }
+
+        public void uhghhhghhg()
+        {
+            var Config = LuneWoL.LWoLServerConfig.Main;
+
+            if (Config.DeathPenaltyMode != 1) return;
+
+            if (AUURHGHRUGH)
+            {
+                JesusStopDyingMoron = 0;
+                AUURHGHRUGH = false;
+            }
+            if (AUURHGHRUGHpart2ofc)
+            {
+                JesusStopDyingMoronPART2EVILDARKANDTWISTED = 0;
+                AUURHGHRUGHpart2ofc = false;
+            }
+        }
+
+        public void ActualBrainrotCodeFuckThisImTired(out StatModifier AUGH, out StatModifier ARGHHH)
+        {
+            AUGH = StatModifier.Default;
+            ARGHHH = StatModifier.Default;
+
+            var Config = LuneWoL.LWoLServerConfig.Main;
+
+            if (Config.DeathPenaltyMode != 1) return;
+
+            AUGH.Base -= JesusStopDyingMoron * 5;
+            ARGHHH.Base -= JesusStopDyingMoronPART2EVILDARKANDTWISTED * 5;
+        }
+        public void MistaWhiteImInFortnite(BinaryReader gaygaygaygay)
+        {
+            var Config = LuneWoL.LWoLServerConfig.Main;
+
+            if (Config.DeathPenaltyMode != 1) return;
+
+            JesusStopDyingMoron = gaygaygaygay.ReadByte();
+            JesusStopDyingMoronPART2EVILDARKANDTWISTED = gaygaygaygay.ReadByte();
+        }
+        public void syncthething(int toWho, int fromWho, bool newPlayer)
+        {
+            var Config = LuneWoL.LWoLServerConfig.Main;
+
+            if (Config.DeathPenaltyMode != 1) return;
+
+            ModPacket packet = Mod.GetPacket();
+            packet.Write((byte)MessageType.dedsec);
+            packet.Write((byte)Player.whoAmI);
+            packet.Write((byte)JesusStopDyingMoron);
+            packet.Write((byte)JesusStopDyingMoronPART2EVILDARKANDTWISTED);
+            packet.Send(toWho, fromWho);
+        }
+
+        public void copytheclientthing(ModPlayer targetCopy)
+        {
+            var Config = LuneWoL.LWoLServerConfig.Main;
+
+            if (Config.DeathPenaltyMode != 1) return;
+
+            LWoLPlayer clone = (LWoLPlayer)targetCopy;
+            clone.JesusStopDyingMoron = JesusStopDyingMoron;
+            clone.JesusStopDyingMoronPART2EVILDARKANDTWISTED = JesusStopDyingMoronPART2EVILDARKANDTWISTED;
+        }
+
+        public void sendtheclientthing(ModPlayer clientPlayer)
+        {
+            var Config = LuneWoL.LWoLServerConfig.Main;
+
+            if (Config.DeathPenaltyMode != 1) return;
+
+            LWoLPlayer clone = (LWoLPlayer)clientPlayer;
+
+            if (JesusStopDyingMoron != clone.JesusStopDyingMoron || JesusStopDyingMoronPART2EVILDARKANDTWISTED != clone.JesusStopDyingMoronPART2EVILDARKANDTWISTED)
+                SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);
+        }
+        public void ActualBrainrotCodeTHISAGUST12TH2025(TagCompound gayshitismyshit)
+        {
+            var Config = LuneWoL.LWoLServerConfig.Main;
+
+            if (Config.DeathPenaltyMode != 1) return;
+
+            gayshitismyshit["hplosthuhhhhh"] = hplosthuhhhhh;
+            gayshitismyshit["bmananalosthuhhhhh"] = bmananalosthuhhhhh;
+            gayshitismyshit["JesusStopDyingMoron"] = JesusStopDyingMoron;
+            gayshitismyshit["JesusStopDyingMoronPART2EVILDARKANDTWISTED"] = JesusStopDyingMoronPART2EVILDARKANDTWISTED;
+        }
+        public void ActualBrainrotCodebutcooler(TagCompound incestiswincest)
+        {
+            var Config = LuneWoL.LWoLServerConfig.Main;
+
+            if (Config.DeathPenaltyMode != 1) return;
+
+            hplosthuhhhhh = incestiswincest.GetInt("hplosthuhhhhh");
+            bmananalosthuhhhhh = incestiswincest.GetInt("bmananalosthuhhhhh");
+            JesusStopDyingMoron = incestiswincest.GetInt("JesusStopDyingMoron");
+            JesusStopDyingMoronPART2EVILDARKANDTWISTED = incestiswincest.GetInt("JesusStopDyingMoronPART2EVILDARKANDTWISTED");
+        }
+
+        #endregion
 
         // literally so annoying to make // rain leaves water behind leading to floods when alot of rain and droghuts when there hasnt been rain in a long time (excludig if the player is in the beach biome)
 

@@ -1,12 +1,8 @@
-﻿using CalamityMod.NPCs.CalClone;
-using System.ComponentModel;
-using Terraria.ModLoader;
-using Terraria.ModLoader.Config;
-using static LuneWoL.Core.Config.LWoLServerStatConfig;
+﻿using Terraria.ModLoader.Config;
 
 namespace LuneWoL.Core.Config
 {
-    [BackgroundColor(15, 25, 50)]
+    [BackgroundColor(15, 25, 50, 255)]
     public class LWoLServerConfig : ModConfig
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
@@ -18,6 +14,13 @@ namespace LuneWoL.Core.Config
             [Slider]
             [Range(0, 4)]
             public int CritFailMode { get; set; }
+            
+            [BackgroundColor(205, 240, 255, 255)]
+            [SliderColor(205, 240, 255, 255)]
+            [Slider]
+            [Range(0, 3)]
+            [ReloadRequired]
+            public int DeathPenaltyMode { get; set; }
 
             [BackgroundColor(205, 240, 255, 255)]
             [ReloadRequired]
@@ -29,8 +32,10 @@ namespace LuneWoL.Core.Config
             public MainDented()
             {
                 CritFailMode = 0;
+                CritFailMode = 0;
                 DarkerNights = false;
                 WindArrows = false;
+
             }
         }
 
@@ -105,6 +110,26 @@ namespace LuneWoL.Core.Config
             }
         }
 
+        public class RecipesDented
+        {
+            [BackgroundColor(90, 185, 175, 255)]
+            [ReloadRequired]
+            public bool IgnoreStacksOfOne;
+
+            [BackgroundColor(90, 185, 175, 255)]
+            [SliderColor(90, 185, 175, 255)]
+            [Range(1f, 100f)]
+            [Increment(1f)]
+            [ReloadRequired]
+            public float RecipePercent;
+
+            public RecipesDented()
+            {
+                IgnoreStacksOfOne = true;
+                RecipePercent = 100f;
+            }
+        }
+
         public class NPCsDented
         {
             [BackgroundColor(245, 85, 80, 255)]
@@ -121,8 +146,8 @@ namespace LuneWoL.Core.Config
             [ReloadRequired]
             public float SellMult { get; set; }
 
-            [BackgroundColor(245, 85, 80, 255)]
-            public bool InvasionsAnywhere { get; set; }
+            //[BackgroundColor(245, 85, 80, 255)]
+            //public bool InvasionsAnywhere { get; set; }
 
             [BackgroundColor(245, 85, 80, 255)]
             [SliderColor(245, 85, 80, 255)]
@@ -131,19 +156,21 @@ namespace LuneWoL.Core.Config
             public int InvasionMultiplier { get; set; }
 
             [BackgroundColor(245, 85, 80, 255)]
+            [ReloadRequired]
             public bool NeverGoldEnough { get; set; }
 
             [BackgroundColor(245, 85, 80, 255)]
             [SliderColor(245, 85, 80, 255)]
             [Range(0f, 1f)]
             [Increment(0.05f)]
+            [ReloadRequired]
             public float NoMoneh { get; set; }
 
             public NPCsDented()
             {
                 BuyMult = 1f;
                 SellMult = 1f;
-                InvasionsAnywhere = false;
+                //InvasionsAnywhere = false;
                 InvasionMultiplier = -1;
                 NeverGoldEnough = false;
                 NoMoneh = 1f;
@@ -218,6 +245,9 @@ namespace LuneWoL.Core.Config
 
         [BackgroundColor(214, 242, 215, 255)]
         public EquipmentDented Equipment = new();
+        
+        [BackgroundColor(90, 185, 175, 255)]
+        public RecipesDented Recipes = new();
 
         [BackgroundColor(245, 85, 80, 255)]
         public NPCsDented NPCs = new();

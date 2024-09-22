@@ -2,8 +2,6 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-using static LuneLib.Utilities.LuneLibUtils;
-
 namespace LuneWoL.Common.LWoLGlobalItems
 {
     public partial class WoLGlobalItems : GlobalItem
@@ -17,7 +15,7 @@ namespace LuneWoL.Common.LWoLGlobalItems
             var Config = LuneWoL.LWoLServerConfig.Misc;
 
             if (Config.DespawnItemsTimer > -1)
-            {            
+            {
                 if (Tajmer > 0)
                 {
                     Tajmer--;
