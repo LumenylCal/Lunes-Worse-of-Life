@@ -27,13 +27,7 @@ namespace LuneWoL.PressureCheckFolder.Mode2
 
         public int MD() // Max Depth
         {
-            if (Player.LibPlayer().IsNearLune)
-            {
-                mD = int.MaxValue;
-                Player.LibPlayer().depthwaterPressure = false;
-                Player.LibPlayer().currentDepthPressure = 0;
-            }
-            else if (Player.arcticDivingGear)
+            if (Player.arcticDivingGear)
             {
                 mD = 500;
             }

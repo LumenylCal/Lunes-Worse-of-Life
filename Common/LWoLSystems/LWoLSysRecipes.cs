@@ -18,6 +18,20 @@ namespace LuneWoL.Common.LWoLSystems
                 AddTile(TileID.Tables).
             Register();
         }
+        
+        public static void AddCrystalRecipie()
+        {
+            var Config = LuneWoL.LWoLServerConfig.Main;
+            if (instance.CalamityModLoaded) return;
+            if (Config.DeathPenaltyMode != 0) return;
+
+            Recipe.Create(ItemID.LifeCrystal).
+                AddIngredient(ItemID.HealingPotion, 1).
+                AddIngredient(ItemID.Ruby, 1).
+                AddIngredient(ItemID.StoneBlock, 2).
+                AddTile(TileID.HeavyWorkBench).
+            Register();
+        }
 
         public void RecipeMulti()
         {

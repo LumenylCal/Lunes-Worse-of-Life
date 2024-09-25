@@ -11,7 +11,7 @@ namespace LuneWoL.Common.LWoLGlobalItems
 
             if (buffs.HealingPotionBadPercent > 0 && buffs.HealingPotionBadPercent < 100)
             {
-                float max = buffs.HealingPotionBadPercent;
+                float max = buffs.HealingPotionBadPercent; // i was high when i wrote this but it works so i dont care
 
                 float clampthethinging = max / 100;
 

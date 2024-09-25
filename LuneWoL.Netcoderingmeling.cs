@@ -12,19 +12,55 @@ namespace LuneWoL
             dedsec
         }
 
-        public override void HandlePacket(BinaryReader librarian, int whoAmI)
+        public override void 
+            HandlePacket(BinaryReader 
+            librarian, int whoAmI)
         {
-            MessageType _11vidsdotcom = (MessageType)librarian.ReadByte();
+            MessageType 
+                _11vidsdotcom = (MessageType)librarian.ReadByte();
 
-            if (_11vidsdotcom == MessageType.dedsec)
+            if (_11vidsdotcom == 
+                MessageType.dedsec)
             {
-                byte thenumber = librarian.ReadByte();
-                LWoLPlayer lWoLPlayer = Main.player[thenumber].GetModPlayer<LWoLPlayer>();
-                lWoLPlayer.MistaWhiteImInFortnite(librarian);
+                byte 
+                    thenumber 
+                    = 
+                    librarian
+                    
+                    
+                    .ReadByte(
+                        
+                        )
+                    
+                    ;
+                LWoLPlayer 
+                    lWoLPlayer = 
+                    Main.
+                    player[
+                        thenumber
+                        
+                        ]
+                        
+                        .
+                    
+                        GetModPlayer
+                    <LWoLPlayer>
+                    (
+                        )
+                    ;
 
-                if (Main.netMode == NetmodeID.Server)
+                lWoLPlayer.MistaWhiteImInFortnite(librarian);
+                if
+                    (
+                    
+                    Main.netMode 
+                    == NetmodeID.
+                    Server)
                 {
-                    lWoLPlayer.SyncPlayer(-1, whoAmI, false);
+                    lWoLPlayer.SyncPlayer
+                        (-1, 
+                        whoAmI, false)
+                        ;
                 }
             }
         }

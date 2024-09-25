@@ -300,7 +300,7 @@ namespace LuneWoL.Common.LWoLPlayers
         {
             var Config = LWoLServerConfig.BiomeSpecific;
 
-            if (!Main.dayTime) return;
+            if (Main.dayTime) return;
 
             if (!Config.NoEvilDayTime) return;
 
@@ -429,6 +429,8 @@ namespace LuneWoL.Common.LWoLPlayers
         // maybe penalties for dying such as reduced max hp just to be evil obviously in masochist config
         //im thinking adding how much life the player has lost and for each 20 lost ConsumedLifeCrystals-- yk???
         //but only if the players health is <= 400 else if > 400 && < 500 ConsumedLifeFruit-- but only for each 5hp lost
+
+        // if youre reading this i can explain... the code was uhhhh i was it uhm i uh it was 4am... thats not a lie actually :nerd:
 
         public int hplosthuhhhhh;
         public int bmananalosthuhhhhh;
@@ -606,7 +608,7 @@ namespace LuneWoL.Common.LWoLPlayers
             gayshitismyshit["JesusStopDyingMoron"] = JesusStopDyingMoron;
             gayshitismyshit["JesusStopDyingMoronPART2EVILDARKANDTWISTED"] = JesusStopDyingMoronPART2EVILDARKANDTWISTED;
         }
-        public void ActualBrainrotCodebutcooler(TagCompound incestiswincest)
+        public void ActualBrainrotCodebutcooler(TagCompound incestiswincest) // cool bug where if you just rejoin it resets the thingy thing im not fixing it because if you go through the pain of rejoining for that extra hp you deserve it
         {
             var Config = LuneWoL.LWoLServerConfig.Main;
 

@@ -38,6 +38,7 @@ namespace LuneWoL.Common.LWoLGlobalItems
                 }
             }
         }
+
         private void DustyDespawn(Item item)
         {
             var Config = LuneWoL.LWoLServerConfig.Misc;

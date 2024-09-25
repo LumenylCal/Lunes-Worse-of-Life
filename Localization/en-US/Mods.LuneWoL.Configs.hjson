@@ -214,7 +214,16 @@ MainDented: {
 
 	DeathPenaltyMode: {
 		Label: Death Penalty Mode
-		Tooltip: ""
+		Tooltip:
+			'''
+			0: Off
+
+			1. Easy: -5 max hp when dieded
+
+			2. Normal: -1 life crystal/fruit when dieded
+
+			3. EXTREME DEMON: sets it to minimum when dieded (100hp, 20mp)
+			'''
 	}
 }
 
