@@ -1,6 +1,6 @@
 Makes your Terraria just a little bit worse to play...
 
-changelog (all are config options):
+changelog:
 See the changelog tab on this steam item.
 
 Everything is disabled by default.
