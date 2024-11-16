@@ -18,7 +18,7 @@ namespace LuneWoL.Common.LWoLSystems
                 AddTile(TileID.Tables).
             Register();
         }
-        
+
         public static void AddCrystalRecipie()
         {
             var Config = LuneWoL.LWoLServerConfig.Main;
@@ -37,7 +37,9 @@ namespace LuneWoL.Common.LWoLSystems
         {
             var Config = LuneWoL.LWoLServerConfig.Recipes;
 
-            if (Config.RecipePercent == 100) return;
+            if (Config.RecipePercent == 0) return;
+
+            float multiplier = 1 + (Config.RecipePercent / 100f);
 
             foreach (Recipe recipe in Main.recipe)
             {
@@ -45,14 +47,15 @@ namespace LuneWoL.Common.LWoLSystems
                 {
                     if (item.stack > 0 && !Config.IgnoreStacksOfOne)
                     {
-                        item.stack = (int)(item.stack * (100f / Config.RecipePercent));
+                        item.stack = (int)(item.stack * multiplier);
                     }
                     else if (item.stack > 1 && Config.IgnoreStacksOfOne)
                     {
-                        item.stack = (int)(item.stack * (100f / Config.RecipePercent));
+                        item.stack = (int)(item.stack * multiplier);
                     }
                 }
             }
         }
+
     }
 }

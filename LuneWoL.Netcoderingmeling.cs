@@ -1,7 +1,7 @@
-using System.IO;
-using Terraria.ID;
-using Terraria;
 using LuneWoL.Common.LWoLPlayers;
+using System.IO;
+using Terraria;
+using Terraria.ID;
 
 namespace LuneWoL
 {
@@ -12,37 +12,37 @@ namespace LuneWoL
             dedsec
         }
 
-        public override void 
-            HandlePacket(BinaryReader 
+        public override void
+            HandlePacket(BinaryReader
             librarian, int whoAmI)
         {
-            MessageType 
+            MessageType
                 _11vidsdotcom = (MessageType)librarian.ReadByte();
 
-            if (_11vidsdotcom == 
+            if (_11vidsdotcom ==
                 MessageType.dedsec)
             {
-                byte 
-                    thenumber 
-                    = 
+                byte
+                    thenumber
+                    =
                     librarian
-                    
-                    
+
+
                     .ReadByte(
-                        
+
                         )
-                    
+
                     ;
-                LWoLPlayer 
-                    lWoLPlayer = 
+                LWoLPlayer
+                    lWoLPlayer =
                     Main.
                     player[
                         thenumber
-                        
+
                         ]
-                        
+
                         .
-                    
+
                         GetModPlayer
                     <LWoLPlayer>
                     (
@@ -52,13 +52,13 @@ namespace LuneWoL
                 lWoLPlayer.MistaWhiteImInFortnite(librarian);
                 if
                     (
-                    
-                    Main.netMode 
+
+                    Main.netMode
                     == NetmodeID.
                     Server)
                 {
                     lWoLPlayer.SyncPlayer
-                        (-1, 
+                        (-1,
                         whoAmI, false)
                         ;
                 }

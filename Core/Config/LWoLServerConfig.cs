@@ -1,4 +1,6 @@
-﻿using Terraria.ModLoader.Config;
+﻿using System;
+using System.Drawing;
+using Terraria.ModLoader.Config;
 
 namespace LuneWoL.Core.Config
 {
@@ -7,6 +9,19 @@ namespace LuneWoL.Core.Config
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
+        public override bool NeedsReload(ModConfig pendingConfig)
+        {
+            if (pendingConfig is not LWoLServerConfig newConfig)
+                return base.NeedsReload(pendingConfig);
+
+            return !Main.Equals(newConfig.Main) ||
+                   !Equipment.Equals(newConfig.Equipment) ||
+                   !Recipes.Equals(newConfig.Recipes) ||
+                   !NPCs.Equals(newConfig.NPCs) ||
+                   !WaterRelated.Equals(newConfig.WaterRelated) ||
+                   !Misc.Equals(newConfig.Misc);
+        }
+
         public class MainDented
         {
             [BackgroundColor(205, 240, 255, 255)]
@@ -14,7 +29,7 @@ namespace LuneWoL.Core.Config
             [Slider]
             [Range(0, 4)]
             public int CritFailMode { get; set; }
-            
+
             [BackgroundColor(205, 240, 255, 255)]
             [SliderColor(205, 240, 255, 255)]
             [Slider]
@@ -35,8 +50,17 @@ namespace LuneWoL.Core.Config
                 CritFailMode = 0;
                 DarkerNights = false;
                 WindArrows = false;
+            }
+            public override bool Equals(object obj)
+            {
+                return obj is MainDented other &&
+                       DeathPenaltyMode == other.DeathPenaltyMode &&
+                       DarkerNights == other.DarkerNights;
 
             }
+
+            public override int GetHashCode() =>
+                HashCode.Combine(DeathPenaltyMode, DarkerNights);
         }
 
         public class BiomeSpecificDented
@@ -108,6 +132,17 @@ namespace LuneWoL.Core.Config
                 NoAccessories = false;
                 ReforgeNerf = false;
             }
+            public override bool Equals(object obj)
+            {
+                return obj is EquipmentDented other &&
+                       DisableAutoReuse == other.DisableAutoReuse &&
+                       NoAccessories == other.NoAccessories &&
+                       ReforgeNerf == other.ReforgeNerf;
+
+            }
+
+            public override int GetHashCode() =>
+                HashCode.Combine(DisableAutoReuse, NoAccessories, ReforgeNerf);
         }
 
         public class RecipesDented
@@ -118,7 +153,7 @@ namespace LuneWoL.Core.Config
 
             [BackgroundColor(90, 185, 175, 255)]
             [SliderColor(90, 185, 175, 255)]
-            [Range(1f, 100f)]
+            [Range(0f, 100f)]
             [Increment(1f)]
             [ReloadRequired]
             public float RecipePercent;
@@ -126,8 +161,18 @@ namespace LuneWoL.Core.Config
             public RecipesDented()
             {
                 IgnoreStacksOfOne = true;
-                RecipePercent = 100f;
+                RecipePercent = 0f;
             }
+
+            public override bool Equals(object obj)
+            {
+                return obj is RecipesDented other &&
+                       RecipePercent == other.RecipePercent &&
+                       IgnoreStacksOfOne == other.IgnoreStacksOfOne;
+            }
+
+            public override int GetHashCode() =>
+                HashCode.Combine(RecipePercent, IgnoreStacksOfOne);
         }
 
         public class NPCsDented
@@ -145,9 +190,6 @@ namespace LuneWoL.Core.Config
             [Increment(0.1f)]
             [ReloadRequired]
             public float SellMult { get; set; }
-
-            //[BackgroundColor(245, 85, 80, 255)]
-            //public bool InvasionsAnywhere { get; set; }
 
             [BackgroundColor(245, 85, 80, 255)]
             [SliderColor(245, 85, 80, 255)]
@@ -170,11 +212,21 @@ namespace LuneWoL.Core.Config
             {
                 BuyMult = 1f;
                 SellMult = 1f;
-                //InvasionsAnywhere = false;
                 InvasionMultiplier = -1;
                 NeverGoldEnough = false;
                 NoMoneh = 1f;
             }
+            public override bool Equals(object obj)
+            {
+                return obj is NPCsDented other &&
+                       BuyMult == other.BuyMult &&
+                       SellMult == other.SellMult &&
+                       NeverGoldEnough == other.NeverGoldEnough &&
+                       NoMoneh == other.NoMoneh;
+            }
+
+            public override int GetHashCode() =>
+                HashCode.Combine(BuyMult, SellMult, NeverGoldEnough, NoMoneh);
         }
 
         public class WaterRelatedDented
@@ -202,6 +254,14 @@ namespace LuneWoL.Core.Config
                 SlowWater = false;
                 WaterPoison = false;
             }
+            public override bool Equals(object obj)
+            {
+                return obj is WaterRelatedDented other &&
+                       DepthPressureMode == other.DepthPressureMode;
+            }
+
+            public override int GetHashCode() =>
+                HashCode.Combine(DepthPressureMode);
         }
 
         public class MiscDented
@@ -214,11 +274,25 @@ namespace LuneWoL.Core.Config
             [ReloadRequired]
             public bool DisableWoLItems { get; set; }
 
+            [BackgroundColor(245, 205, 255, 255)]
+            [ReloadRequired]
+            public bool SkillIssueMode { get; set; }
+
             public MiscDented()
             {
                 DisableWoLItems = false;
+                SkillIssueMode = false;
                 DespawnItemsTimer = -1;
             }
+            public override bool Equals(object obj)
+            {
+                return obj is MiscDented other &&
+                       DisableWoLItems == other.DisableWoLItems &&
+                       SkillIssueMode == other.SkillIssueMode;
+            }
+
+            public override int GetHashCode() =>
+                HashCode.Combine(DisableWoLItems, SkillIssueMode);
         }
 
         public class CalamityDented
@@ -245,7 +319,7 @@ namespace LuneWoL.Core.Config
 
         [BackgroundColor(214, 242, 215, 255)]
         public EquipmentDented Equipment = new();
-        
+
         [BackgroundColor(90, 185, 175, 255)]
         public RecipesDented Recipes = new();
 

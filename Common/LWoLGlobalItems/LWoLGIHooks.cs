@@ -3,15 +3,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-using static LuneLib.Utilities.LuneLibUtils;
-
 namespace LuneWoL.Common.LWoLGlobalItems
 {
     public partial class WoLGlobalItems : GlobalItem
     {
-        public static bool DrinkingCoffeeCanQuationMark = true;
-        public static bool c = true;
-
         public override bool InstancePerEntity => true;
 
         public override bool? UseItem(Item item, Player player)

@@ -63,7 +63,7 @@ namespace LuneWoL.PressureCheckFolder.Mode2
             if (lifeLossAtZeroBreath < 0)
                 lifeLossAtZeroBreath = 0;
 
-            if (LuneLib.LuneLib.debug.DebugMessages && Player.whoAmI == Main.myPlayer)
+            if (LuneLib.LuneLib.clientConfig.DebugMessages && Player.whoAmI == Main.myPlayer)
             {
                 Main.NewText($"dR = {dR}, BL = X, TM = {tickMult}, T = {tick}, LLAZB = {lifeLossAtZeroBreath}");
             }

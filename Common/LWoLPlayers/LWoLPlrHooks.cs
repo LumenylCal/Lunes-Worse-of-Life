@@ -61,7 +61,7 @@ namespace LuneWoL.Common.LWoLPlayers
         {
             var Config = LuneWoL.LWoLServerConfig.Main;
 
-            if (Player.whoAmI == Main.myPlayer && LuneLib.LuneLib.debug.DebugMessages)
+            if (Player.whoAmI == Main.myPlayer && LuneLib.LuneLib.clientConfig.DebugMessages)
             {
                 Main.NewText($"Heat = {HeatStrokeCounter}, Bliz = {tundraBlizzardCounter}");
             }

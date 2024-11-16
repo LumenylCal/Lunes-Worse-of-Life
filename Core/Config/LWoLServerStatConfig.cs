@@ -2,7 +2,7 @@
 
 namespace LuneWoL.Core.Config
 {
-    [BackgroundColor(15, 25, 50, 255)]
+    [BackgroundColor(50, 15, 15, 255)]
     public class LWoLServerStatConfig : ModConfig
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;

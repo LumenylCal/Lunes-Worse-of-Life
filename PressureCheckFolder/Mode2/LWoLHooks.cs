@@ -19,7 +19,7 @@ namespace LuneWoL.PressureCheckFolder.Mode2
             {
                 CheckWaterDepth();
 
-                if (LuneLib.LuneLib.debug.DebugMessages)
+                if (LuneLib.LuneLib.clientConfig.DebugMessages)
                 {
                     Main.NewText($"W = {InWaterBody}, E = {EntryPoint.Y}, X = {ExitPoint.Y}");
                 }
@@ -70,7 +70,7 @@ namespace LuneWoL.PressureCheckFolder.Mode2
                 Lighting.GlobalBrightness *= clampedLDD;
             }
 
-            if (LuneLib.LuneLib.debug.DebugMessages && Player.whoAmI == Main.myPlayer && Config.DepthPressureMode == 2)
+            if (LuneLib.LuneLib.clientConfig.DebugMessages && Player.whoAmI == Main.myPlayer && Config.DepthPressureMode == 2)
             {
                 Main.NewText($"MD = {mD}, RD = {rD}, RDD = {rDD}, CDP = {Player.LibPlayer().currentDepthPressure}, LDD = {lDD}");
             }

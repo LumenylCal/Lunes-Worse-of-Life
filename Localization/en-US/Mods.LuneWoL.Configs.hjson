@@ -60,7 +60,7 @@ LWoLServerStatConfig: {
 	DisplayName: Stat Config
 
 	PlayerStats: {
-		Label: Player Stats
+		Label: Player Stats [i:3122]
 		Tooltip: ""
 	}
 
@@ -122,7 +122,9 @@ BiomeSpecificDented: {
 			'''
 			Makes the evil biome only enterable during night time
 
-			Applies alooot of Damage Over Time when in the crimson or corruption during day.
+			Applies alooot of Damage Over Time when in the crimson or corruption during night.
+
+			reason being that uh light = good and dark = bad and evil = bad so evil like bad and no good like
 
 			Suggested by `Lune`.
 			'''
@@ -295,11 +297,7 @@ RecipesDented: {
 		Label: Recipe Ingredient Percentage
 		Tooltip:
 			'''
-			Lower values means more items are required.
-
-			50 means double the items needed
-
-			Set to 100 to disable.
+			Set to 0 to disable.
 
 			Suggested by `Lune`.
 			'''
@@ -460,6 +458,11 @@ MiscDented: {
 	DisableWoLItems: {
 		Label: Disable WoL Items
 		Tooltip: Completely disables all items from this mod.
+	}
+
+	SkillIssueMode: {
+		Label: Skill Issue Mode
+		Tooltip: ""
 	}
 }
 

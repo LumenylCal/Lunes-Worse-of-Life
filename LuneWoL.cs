@@ -17,26 +17,25 @@ namespace LuneWoL
             instance = this;
             Instance = this;
 
-            // hi coyote mods!11!!111! stop trying to IL my shit its not hard to patch nor are any of your users using my mod lmfao
-            if (LuneLib.LuneLib.instance.CoyoteframesLoaded)
+            // leave me alone coyote devs
+            if (LuneLib.LuneLib.instance.CoyoteframesLoaded && !LWoLServerConfig.Misc.SkillIssueMode)
             {
-                throw new System.Exception($"disable coyote frames mod... skill issue if you need that shit!!!! this cannot be turned off because i just dont feel like it LMFAO\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"); 
+                throw new System.Exception($"Enable `Skill Issue Mode` if you wanna use the `Coyote Frames` mod.\n" + new string('\n', 20));
             }
 
+            // compat issues im guessing (havent tried)
             if (LuneLib.LuneLib.instance.StrongerReforgesLoaded && LWoLServerConfig.Equipment.ReforgeNerf)
             {
-                throw new System.Exception($"Disable `Reforge Nerf` in the config if you wanna use the `Stronger Reforges` mod.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"); 
+                throw new System.Exception("Disable `Reforge Nerf` in the config if you wanna use the `Stronger Reforges` mod.\n" + new string('\n', 20));
             }
-            
+
+            // same as reforge thing
             if (LuneLib.LuneLib.instance.DarkSurfaceLoaded && LWoLServerConfig.Main.DarkerNights)
             {
-                throw new System.Exception($"Disable `Darker Nights` in the config if you wanna use the `Dark Surface` mod.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"); 
+                throw new System.Exception("Disable `Darker Nights` in the config if you wanna use the `Dark Surface` mod.\n" + new string('\n', 20));
             }
 
             LWoLILEdits.load();
-
-            //if (LuneLib.LuneLib.instance.CalamityModLoaded)
-            //{ CalamityILandReflection.load(); }
         }
 
         public override void Unload()

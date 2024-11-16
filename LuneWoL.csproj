@@ -7,7 +7,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="FuckOff.png" />
+	  <AdditionalFiles Remove="Content\Dusts\**" />
+	  <Compile Remove="Content\Dusts\**" />
+	  <EmbeddedResource Remove="Content\Dusts\**" />
+	  <None Remove="Content\Dusts\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Localization\en-US\Mods.LuneWoL.Buffs.hjson" />
 	  <None Remove="Localization\en-US\Mods.LuneWoL.Configs.hjson" />
 	  <None Remove="todo.txt" />
@@ -31,8 +37,6 @@
 	<ItemGroup>
 	  <Folder Include="Assets\Images\Buffs\DOT\" />
 	  <Folder Include="Assets\Images\Buffs\Debuffs\" />
-	  <Folder Include="Content\Dusts\" />
-	  <Folder Include="Experiments\" />
 	</ItemGroup>
 
 </Project>

@@ -2,14 +2,11 @@
 using LuneWoL.Content.Buffs.Debuffs;
 using LuneWoL.Content.Buffs.DOT;
 using Microsoft.Xna.Framework;
-using Stubble.Core.Classes;
 using System;
 using System.IO;
 using Terraria;
 using Terraria.GameContent.Events;
-using Terraria.Graphics.CameraModifiers;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using static LuneLib.Common.Players.LuneLibPlayer.LibPlayer;
@@ -324,7 +321,7 @@ namespace LuneWoL.Common.LWoLPlayers
                 var Config = LWoLServerConfig.Main;
 
                 if (Config.WindArrows && Projectile.arrow &&
-                    (double)Projectile.Center.Y < Main.worldSurface * 16.0
+                    Projectile.Center.Y < Main.worldSurface * 16.0
                     && Main.tile[(int)Projectile.Center.X / 16, (int)Projectile.Center.Y / 16] != null
                     && Main.tile[(int)Projectile.Center.X / 16, (int)Projectile.Center.Y / 16].WallType == 0
                     && ((Projectile.velocity.X > 0f
@@ -461,7 +458,7 @@ namespace LuneWoL.Common.LWoLPlayers
                 Player.ConsumedManaCrystals--;
             }
         }
-        
+
         public void THEBLACKONE()
         {
             var Config = LuneWoL.LWoLServerConfig.Main;
@@ -513,7 +510,7 @@ namespace LuneWoL.Common.LWoLPlayers
                 JesusStopDyingMoron = 0;
                 Player.ConsumedLifeFruit--;
             }
-            
+
             if (bmananalosthuhhhhh >= 20 && Player.statManaMax2 <= 200 && Player.statManaMax2 > 20)
             {
                 bmananalosthuhhhhh = 0;
