@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+using static LuneLib.Utilities.LuneLibUtils;
 
 namespace LuneWoL.Common.LWoLSystems
 {
@@ -26,6 +27,11 @@ namespace LuneWoL.Common.LWoLSystems
                 Main.invasionProgressMax /= Config.InvasionMultiplier;
                 NPC.waveNumber /= Config.InvasionMultiplier;
                 b = true;
+            }
+
+            if (LuneLib.LuneLib.clientConfig.DebugMessages && L.whoAmI == Main.myPlayer)
+            {
+                Main.NewText($"progress: {Main.invasionProgress}, size start: {Main.invasionSizeStart}, Size: {Main.invasionSize}, Progress Max: {Main.invasionProgressMax}");
             }
         }
     }

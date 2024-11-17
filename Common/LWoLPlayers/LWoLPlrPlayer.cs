@@ -22,7 +22,7 @@ namespace LuneWoL.Common.LWoLPlayers
         public int tundraChilledCounter;
         public int HeatStrokeCounter;
 
-        #region methods for prebuffupdateingupdating update update pre skeletron of eye chlututl
+        #region methods for update update pre skeletron of eye chlututl
 
         #region space pain
 
@@ -423,11 +423,6 @@ namespace LuneWoL.Common.LWoLPlayers
         #endregion
 
         #region asdasd
-        // maybe penalties for dying such as reduced max hp just to be evil obviously in masochist config
-        //im thinking adding how much life the player has lost and for each 20 lost ConsumedLifeCrystals-- yk???
-        //but only if the players health is <= 400 else if > 400 && < 500 ConsumedLifeFruit-- but only for each 5hp lost
-
-        // if youre reading this i can explain... the code was uhhhh i was it uhm i uh it was 4am... thats not a lie actually :nerd:
 
         public int hplosthuhhhhh;
         public int bmananalosthuhhhhh;
@@ -619,11 +614,6 @@ namespace LuneWoL.Common.LWoLPlayers
 
         #endregion
 
-        // literally so annoying to make // rain leaves water behind leading to floods when alot of rain and droghuts when there hasnt been rain in a long time (excludig if the player is in the beach biome)
-
-        // maybe later... // poor air quality in caves leading player to take DoT unless they have {Immunity Item/Buff}
-
         #endregion
-
     }
 }

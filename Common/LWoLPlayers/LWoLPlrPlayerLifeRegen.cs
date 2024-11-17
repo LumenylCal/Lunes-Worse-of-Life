@@ -7,6 +7,7 @@ namespace LuneWoL.Common.LWoLPlayers
 {
     public partial class LWoLPlayer : ModPlayer
     {
+        public static int spacedout = 50;
         public override void UpdateBadLifeRegen()
         {
             float totalNegativeLifeRegen = 0;
@@ -23,7 +24,12 @@ namespace LuneWoL.Common.LWoLPlayers
                 totalNegativeLifeRegen += negativeLifeRegenToApply;
             }
 
-            ApplyDoTDebuff(L.LibPlayer().BoilFreeze, 15, false);
+            spacedout = 50 -
+                (WearingAstroHelm ? 10 : 0) -
+                (WearingAstraliteVisor ? 15 : 0) -
+                (IsWearingFishBowl ? 10 : 0);
+
+            ApplyDoTDebuff(L.LibPlayer().BoilFreeze, spacedout, WearingFullAstralite || WearingFullAstro);
 
             ApplyDoTDebuff(L.LibPlayer().depthwaterPressure, L.LibPlayer().currentDepthPressure, LL);
 
