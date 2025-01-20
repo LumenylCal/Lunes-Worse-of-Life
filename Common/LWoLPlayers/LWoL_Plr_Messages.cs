@@ -12,7 +12,11 @@ namespace LuneWoL.Common.LWoLPlayers
 
             await Task.Delay(5000);
 
-            if (Player.whoAmI == Main.myPlayer)
+            if (Player.whoAmI == Main.myPlayer && !LuneLib.LuneLib.instance.ChatSourceLoaded)
+            {
+                Main.NewText($"[LuneWoL] Dont forget to join the Discord!... Please? I need suggestions for the mod...\nYou can turn this message off in the client config.", 70, 80, 150);
+            }
+            else if (Player.whoAmI == Main.myPlayer && LuneLib.LuneLib.instance.ChatSourceLoaded)
             {
                 Main.NewText($"Dont forget to join the Discord!... Please? I need suggestions for the mod...\nYou can turn this message off in the client config.", 70, 80, 150);
             }

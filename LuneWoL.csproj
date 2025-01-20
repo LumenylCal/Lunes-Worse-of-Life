@@ -16,7 +16,6 @@
 	<ItemGroup>
 	  <None Remove="Localization\en-US\Mods.LuneWoL.Buffs.hjson" />
 	  <None Remove="Localization\en-US\Mods.LuneWoL.Configs.hjson" />
-	  <None Remove="todo.txt" />
 	</ItemGroup>
 
 	<ItemGroup>

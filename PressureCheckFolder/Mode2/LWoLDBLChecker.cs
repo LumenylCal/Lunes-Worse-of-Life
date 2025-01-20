@@ -22,7 +22,8 @@ namespace LuneWoL.PressureCheckFolder.Mode2
         #region Breath
 
         public void BreathChecker()
-        {
+        { // stolen from clamtitty mod cause they sorta already had a system for it
+            //i know i should add a seperate one for calamity mod because of the abyss and it has its own system for this butttttt i feel like you can just disable it at that point because im lazy
             double dR = ModeTwo.tD / ModeTwo.mD;
 
             dR *= 2D;

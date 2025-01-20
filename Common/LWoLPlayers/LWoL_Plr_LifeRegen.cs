@@ -9,7 +9,7 @@ namespace LuneWoL.Common.LWoLPlayers
     {
         public static int spacedout = 50;
         public override void UpdateBadLifeRegen()
-        {
+        { // more calamity theft
             float totalNegativeLifeRegen = 0;
 
             void ApplyDoTDebuff(bool hasDebuff, int negativeLifeRegenToApply, bool immuneCondition = false)

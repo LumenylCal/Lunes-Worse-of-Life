@@ -9,7 +9,7 @@ namespace LuneWoL.Common.LWoLSystems
 
         /*
             modified code from the darker surface mod to allow for moon phase changes
-            if the author of the mod sees this feel free to copy and modify to your hearts desires
+            if the author of the mod sees this feel free reach out if you want me to remove it
             or contact me if you see any issues with the calculations. i got confused halfway through and called it a day
          */
 
@@ -65,7 +65,7 @@ namespace LuneWoL.Common.LWoLSystems
                 1 => 0.8f, // Waning Gibbous
                 2 => 0.6f, // Third Quarter
                 3 => 0.4f, // Waning Crescent
-                4 => 0.3f, // New Moon          lower values will cause lighting issues but you can bearly see a dif anyways
+                4 => 0.35f, // New Moon          lower values will cause lighting issues but you can bearly see a dif anyways
                 5 => 0.4f, // Waxing Crescent
                 6 => 0.6f, // First Quarter
                 7 => 0.8f, // Waxing Gibbous

@@ -4,11 +4,11 @@ using Terraria;
 
 using static LuneLib.Utilities.LuneLibUtils;
 
-namespace LuneWoL.WoL_IL_Edits
+namespace LuneWoL.LWoL_IL_Edits
 {
     public partial class LWoLILEdits
     {
-        public static void load()
+        public static void LoadIL()
         {
             var npc = LuneWoL.LWoLServerConfig.NPCs;
             var equip = LuneWoL.LWoLServerConfig.Equipment;
@@ -61,8 +61,6 @@ namespace LuneWoL.WoL_IL_Edits
                 cursor.Emit(OpCodes.Conv_R8);
                 cursor.Emit(OpCodes.Mul);
             }
-
-            updateOffsets(cursor);
         }
         #endregion
 
@@ -179,8 +177,6 @@ namespace LuneWoL.WoL_IL_Edits
                 c.Emit(OpCodes.Ldc_R4, 0.02f);
             }
             #endregion
-
-            updateOffsets(c);
         }
 
         private static void AccessoryTooltipFix(ILContext iL)
@@ -299,8 +295,6 @@ namespace LuneWoL.WoL_IL_Edits
                 c.Emit(OpCodes.Ldstr, "+2");
             }
             #endregion
-
-            updateOffsets(c);
         }
 
         private static void NerfWeaponReforges(ILContext iL)
@@ -1214,8 +1208,6 @@ namespace LuneWoL.WoL_IL_Edits
                 c.Emit(OpCodes.Ldc_I4, 1);
             }
             #endregion
-
-            updateOffsets(c);
         }
 
         #endregion

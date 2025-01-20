@@ -2,8 +2,10 @@
 using LuneWoL.Content.Buffs.Debuffs;
 using LuneWoL.Content.Buffs.DOT;
 using Microsoft.Xna.Framework;
+using MonoMod.Cil;
 using System;
 using System.IO;
+using System.Reflection;
 using Terraria;
 using Terraria.GameContent.Events;
 using Terraria.ID;
@@ -72,7 +74,7 @@ namespace LuneWoL.Common.LWoLPlayers
 
             if (Player.OceanMan() && Config.SlowWater && !LL)
             {
-                float maxSpeed = 10f;
+                float maxSpeed = 8f;
                 if (Player.velocity.Length() > maxSpeed)
                 {
                     Player.velocity = Vector2.Normalize(Player.velocity) * maxSpeed;

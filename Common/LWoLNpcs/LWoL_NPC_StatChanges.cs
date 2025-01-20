@@ -4,7 +4,7 @@ using static LuneWoL.LuneWoL;
 
 namespace LuneWoL.Common.LWoLNpcs
 {
-    public class LWoLNPCStatChanges : GlobalNPC
+    public class LWoL_NPC_StatChanges : GlobalNPC
     {
         public override bool InstancePerEntity => true;
 

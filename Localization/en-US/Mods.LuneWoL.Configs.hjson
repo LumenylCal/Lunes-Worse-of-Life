@@ -24,6 +24,11 @@ LWoLServerConfig: {
 		Tooltip: ""
 	}
 
+	Tiles: {
+		Label: Tiles
+		Tooltip: ""
+	}
+
 	NPCs: {
 		Label: NPCs
 		Tooltip: ""
@@ -75,6 +80,22 @@ LWoLServerStatConfig: {
 	}
 }
 
+TilesDented: {
+	OreDestroyChance: {
+		Label: (Fragile Ores) Ore Destroy Chance
+		Tooltip:
+			'''
+			Makes ores have a chance to not drop when mined.
+
+			Set to 0% to disable.
+
+			Suggested by `Mushy`.
+			'''
+	}
+
+	Tooltip: ""
+}
+
 BuffsAndDebuffsDented: {
 	HealingPotionBadPercent: {
 		Label: Worse Healing Potions
@@ -82,7 +103,7 @@ BuffsAndDebuffsDented: {
 			'''
 			Percent of the potion.
 
-			100% is normal.
+			100% is vanilla behaviour.
 
 			Set to 100 to disable.
 
@@ -184,6 +205,18 @@ MainDented: {
 		Tooltip:
 			'''
 			Obscures your vision at night.
+
+			Suggested by `Lune`.
+			'''
+	}
+
+	DemonMode: {
+		Label: Demon Mode
+		Tooltip:
+			'''
+			have fun!!11
+
+			(its a secret)
 
 			Suggested by `Lune`.
 			'''

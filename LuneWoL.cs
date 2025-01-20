@@ -1,5 +1,5 @@
 using LuneWoL.Core.Config;
-using LuneWoL.WoL_IL_Edits;
+using LuneWoL.LWoL_IL_Edits;
 using Terraria.ModLoader;
 
 namespace LuneWoL
@@ -17,12 +17,6 @@ namespace LuneWoL
             instance = this;
             Instance = this;
 
-            // leave me alone coyote devs
-            if (LuneLib.LuneLib.instance.CoyoteframesLoaded && !LWoLServerConfig.Misc.SkillIssueMode)
-            {
-                throw new System.Exception($"Enable `Skill Issue Mode` if you wanna use the `Coyote Frames` mod.\n" + new string('\n', 20));
-            }
-
             // compat issues im guessing (havent tried)
             if (LuneLib.LuneLib.instance.StrongerReforgesLoaded && LWoLServerConfig.Equipment.ReforgeNerf)
             {
@@ -35,7 +29,7 @@ namespace LuneWoL
                 throw new System.Exception("Disable `Darker Nights` in the config if you wanna use the `Dark Surface` mod.\n" + new string('\n', 20));
             }
 
-            LWoLILEdits.load();
+            LWoLILEdits.LoadIL();
         }
 
         public override void Unload()

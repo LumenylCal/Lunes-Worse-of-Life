@@ -19,9 +19,10 @@ namespace LuneWoL.Common.LWoLSystems
             Register();
         }
 
-        public static void AddCrystalRecipie()
+        public static void AddCrystalRecipe()
         {
             var Config = LuneWoL.LWoLServerConfig.Main;
+
             if (instance.CalamityModLoaded) return;
             if (Config.DeathPenaltyMode != 0) return;
 

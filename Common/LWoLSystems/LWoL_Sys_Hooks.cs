@@ -1,4 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
+using MonoMod.Cil;
+using System.Reflection;
 using Terraria.ModLoader;
 
 namespace LuneWoL.Common.LWoLSystems
@@ -13,6 +15,7 @@ namespace LuneWoL.Common.LWoLSystems
         public override void AddRecipes()
         {
             AddMusicBox();
+            AddCrystalRecipe();
         }
 
         public override void PostAddRecipes()

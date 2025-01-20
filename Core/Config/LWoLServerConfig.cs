@@ -17,6 +17,7 @@ namespace LuneWoL.Core.Config
             return !Main.Equals(newConfig.Main) ||
                    !Equipment.Equals(newConfig.Equipment) ||
                    !Recipes.Equals(newConfig.Recipes) ||
+                   !Tiles.Equals(newConfig.Tiles) ||
                    !NPCs.Equals(newConfig.NPCs) ||
                    !WaterRelated.Equals(newConfig.WaterRelated) ||
                    !Misc.Equals(newConfig.Misc);
@@ -43,6 +44,9 @@ namespace LuneWoL.Core.Config
 
             [BackgroundColor(205, 240, 255, 255)]
             public bool WindArrows { get; set; }
+            
+            [BackgroundColor(205, 240, 255, 255)]
+            public bool DemonMode { get; set; }
 
             public MainDented()
             {
@@ -50,7 +54,9 @@ namespace LuneWoL.Core.Config
                 CritFailMode = 0;
                 DarkerNights = false;
                 WindArrows = false;
+                DemonMode = false;
             }
+
             public override bool Equals(object obj)
             {
                 return obj is MainDented other &&
@@ -175,6 +181,31 @@ namespace LuneWoL.Core.Config
                 HashCode.Combine(RecipePercent, IgnoreStacksOfOne);
         }
 
+        public class TilesDented
+        {
+            [BackgroundColor(75, 100, 75, 255)]
+            [SliderColor(75, 100, 75, 255)]
+            [Range(0f, 100f)]
+            [Increment(1f)]
+            [ReloadRequired]
+            public float OreDestroyChance;
+
+            public TilesDented()
+            {
+                OreDestroyChance = 0f;
+            }
+
+            public override bool Equals(object obj)
+            {
+                return obj is TilesDented other &&
+                       OreDestroyChance == other.OreDestroyChance;
+
+            }
+
+            public override int GetHashCode() =>
+                HashCode.Combine(OreDestroyChance);
+        }
+
         public class NPCsDented
         {
             [BackgroundColor(245, 85, 80, 255)]
@@ -237,7 +268,7 @@ namespace LuneWoL.Core.Config
             [BackgroundColor(155, 160, 225, 255)]
             [SliderColor(155, 160, 225, 255)]
             [Slider]
-            [Range(0, 2)]
+            [Range(0, 1)]
             [ReloadRequired]
             public int DepthPressureMode { get; set; }
 
@@ -322,6 +353,9 @@ namespace LuneWoL.Core.Config
 
         [BackgroundColor(90, 185, 175, 255)]
         public RecipesDented Recipes = new();
+        
+        [BackgroundColor(75, 100, 75, 255)]
+        public TilesDented Tiles = new();
 
         [BackgroundColor(245, 85, 80, 255)]
         public NPCsDented NPCs = new();

@@ -5,7 +5,7 @@ using static LuneWoL.LuneWoL;
 
 namespace LuneWoL.Common.LWoLPlayers
 {
-    public class LWoLPlayerStatChanges : ModPlayer
+    public class LWoL_PlayerStatChanges : ModPlayer
     {
         public override void PostUpdateMiscEffects()
         {
