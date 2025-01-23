@@ -17,7 +17,6 @@ namespace LuneWoL.Common.Npcs
                 SpikedJungleSlimeFuckery(npc);
             }
             LessMoneyDrops(npc);
-
             NeverGoldEnough(npc);
         }
     }

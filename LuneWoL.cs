@@ -12,6 +12,20 @@ namespace LuneWoL
         public static LWoLClientConfig LWoLClientConfig;
         public static LWoLServerStatConfig LWoLServerStatConfig;
 
+        private Mod clam;
+
+        public void InitializeGlizzy()
+        {
+            if (ModLoader.TryGetMod("CalamityMod", out Mod result))
+            {
+                clam = result;
+            }
+            else
+            {
+                clam = null;
+            }
+        }
+
         public override void Load()
         {
             instance = this;

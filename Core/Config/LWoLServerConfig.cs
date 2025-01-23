@@ -173,14 +173,14 @@ namespace LuneWoL.Core.Config
         {
             [BackgroundColor(5, 40, 95, 255)]
             [SliderColor(5, 40, 95, 255)]
-            [Range(0f, 100f)]
-            [Increment(1f)]
+            [Range(0, 100)]
+            [Increment(1)]
             [ReloadRequired]
-            public float OreDestroyChance;
+            public int OreDestroyChance;
 
             public TilesDented()
             {
-                OreDestroyChance = 0f;
+                OreDestroyChance = 0;
             }
 
             public override bool Equals(object obj)
