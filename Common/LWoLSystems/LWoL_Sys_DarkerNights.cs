@@ -14,8 +14,7 @@ namespace LuneWoL.Common.LWoLSystems
          */
 
         private int _currentMoonPhase = -1;
-        private bool asd = false;
-        private bool asdas = false;
+        private bool asd = false, asdas = false;
 
         public override void OnWorldLoad()
         {

@@ -8,11 +8,11 @@ namespace LuneWoL.Common.LWoLPlayers
 {
     public partial class LWoLPlayer : ModPlayer
     {
-        public static bool IsCritFail;
+        public bool IsCritFail;
 
-        public static bool DmgPlrBcCrit;
+        public bool DmgPlrBcCrit;
 
-        public static int AplyDmgAmt;
+        public int AplyDmgAmt;
 
         public void CritFail(Player player, NPC npc)
         {
@@ -56,7 +56,7 @@ namespace LuneWoL.Common.LWoLPlayers
             }
         }
 
-        public static async void WaitUntilZero()
+        public async void WaitUntilZero()
         {
             await Task.Delay(32);
 

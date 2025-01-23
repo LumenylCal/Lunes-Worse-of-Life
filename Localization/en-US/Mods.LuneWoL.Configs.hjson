@@ -260,6 +260,8 @@ MainDented: {
 			3. EXTREME DEMON: sets it to minimum when dieded (100hp, 20mp)
 			'''
 	}
+
+	DisplayName: Main Dented
 }
 
 EquipmentDented: {
@@ -442,9 +444,9 @@ WaterRelatedDented: {
 
 			0: Off.
 
-			1: NOT IMPLEMENTED accurate but slow. 
+			1: fast but can be sometimes inaccurate.
 
-			2: fast but can be sometimes inaccurate.
+			2: NOT IMPLEMENTED accurate but slow.
 
 			Suggested by `Lune`.
 			'''

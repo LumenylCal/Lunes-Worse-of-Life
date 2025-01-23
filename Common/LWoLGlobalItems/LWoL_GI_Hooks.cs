@@ -11,16 +11,17 @@ namespace LuneWoL.Common.LWoLGlobalItems
 
         public override bool? UseItem(Item item, Player player)
         {
+            var p = player.GetModPlayer<LWoLPlayer>();
             var main = LuneWoL.LWoLServerConfig.Main;
 
-            if (player.whoAmI == Main.myPlayer && main.CritFailMode != 0 && LWoLPlayer.IsCritFail)
+            if (player.whoAmI == Main.myPlayer && main.CritFailMode != 0 && p.IsCritFail)
             {
                 if (main.CritFailMode == 1)
                 {
-                    LWoLPlayer.AplyDmgAmt = player.GetWeaponDamage(item);
+                    p.AplyDmgAmt = player.GetWeaponDamage(item);
                 }
 
-                LWoLPlayer.DmgPlrBcCrit = true;
+                p.DmgPlrBcCrit = true;
             }
 
             if (item.type == ItemID.LifeCrystal && main.DeathPenaltyMode == 1)

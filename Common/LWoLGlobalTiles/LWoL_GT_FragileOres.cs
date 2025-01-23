@@ -2,7 +2,6 @@
 using Terraria.ModLoader;
 using LuneLib.Utilities;
 using static LuneLib.Utilities.Hashsets.HashSets;
-using LuneLib.Utilities.Hashsets.Vanilla;
 
 namespace LuneWoL.Common.LWoLGlobalTiles
 {

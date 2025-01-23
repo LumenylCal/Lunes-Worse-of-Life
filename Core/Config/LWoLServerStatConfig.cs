@@ -9,6 +9,7 @@ namespace LuneWoL.Core.Config
 
         #region Player Stats
 
+        [SeparatePage]
         public class PlayerStatDented
         {
             #region Vitality
@@ -186,6 +187,7 @@ namespace LuneWoL.Core.Config
 
         #region NPC stats
 
+        [SeparatePage]
         public class NpcStatDented
         {
             [BackgroundColor(75, 105, 130, 255)]
@@ -211,6 +213,8 @@ namespace LuneWoL.Core.Config
                 DisableNPCStatChanges = true;
             }
         }
+
+        [SeparatePage]
         public class BossStatDented
         {
             [BackgroundColor(110, 90, 150, 255)]

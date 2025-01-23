@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Drawing;
 using Terraria.ModLoader.Config;
 
 namespace LuneWoL.Core.Config
 {
-    [BackgroundColor(15, 25, 50, 255)]
+    [BackgroundColor(5, 30, 50, 255)]
     public class LWoLServerConfig : ModConfig
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
@@ -23,29 +22,30 @@ namespace LuneWoL.Core.Config
                    !Misc.Equals(newConfig.Misc);
         }
 
+        [SeparatePage]
         public class MainDented
         {
-            [BackgroundColor(205, 240, 255, 255)]
-            [SliderColor(205, 240, 255, 255)]
+            [BackgroundColor(155, 170, 205, 255)]
+            [SliderColor(155, 170, 205, 255)]
             [Slider]
             [Range(0, 4)]
             public int CritFailMode { get; set; }
 
-            [BackgroundColor(205, 240, 255, 255)]
-            [SliderColor(205, 240, 255, 255)]
+            [BackgroundColor(155, 170, 205, 255)]
+            [SliderColor(155, 170, 205, 255)]
             [Slider]
             [Range(0, 3)]
             [ReloadRequired]
             public int DeathPenaltyMode { get; set; }
 
-            [BackgroundColor(205, 240, 255, 255)]
+            [BackgroundColor(155, 170, 205, 255)]
             [ReloadRequired]
             public bool DarkerNights { get; set; }
 
-            [BackgroundColor(205, 240, 255, 255)]
+            [BackgroundColor(155, 170, 205, 255)]
             public bool WindArrows { get; set; }
-            
-            [BackgroundColor(205, 240, 255, 255)]
+
+            [BackgroundColor(155, 170, 205, 255)]
             public bool DemonMode { get; set; }
 
             public MainDented()
@@ -69,24 +69,25 @@ namespace LuneWoL.Core.Config
                 HashCode.Combine(DeathPenaltyMode, DarkerNights);
         }
 
+        [SeparatePage]
         public class BiomeSpecificDented
         {
-            [BackgroundColor(240, 240, 215, 255)]
+            [BackgroundColor(120, 135, 180, 255)]
             public bool Chilly { get; set; }
 
-            [BackgroundColor(240, 240, 215, 255)]
+            [BackgroundColor(120, 135, 180, 255)]
             public bool HeatStroke { get; set; }
 
-            [BackgroundColor(240, 240, 215, 255)]
+            [BackgroundColor(120, 135, 180, 255)]
             public bool HellIsHot { get; set; }
 
-            [BackgroundColor(240, 240, 215, 255)]
+            [BackgroundColor(120, 135, 180, 255)]
             public bool NoEvilDayTime { get; set; }
 
-            [BackgroundColor(240, 240, 215, 255)]
+            [BackgroundColor(120, 135, 180, 255)]
             public bool SpacePain { get; set; }
 
-            [BackgroundColor(240, 240, 215, 255)]
+            [BackgroundColor(120, 135, 180, 255)]
             public bool WeatherPain { get; set; }
 
             public BiomeSpecificDented()
@@ -100,11 +101,12 @@ namespace LuneWoL.Core.Config
             }
         }
 
+        [SeparatePage]
         public class BuffsAndDebuffsDented
         {
-            [BackgroundColor(214, 218, 242, 255)]
+            [BackgroundColor(80, 100, 150, 255)]
             [Slider]
-            [SliderColor(214, 218, 242, 255)]
+            [SliderColor(80, 100, 150, 255)]
             [Range(0, 100)]
             public int HealingPotionBadPercent { get; set; }
 
@@ -114,20 +116,21 @@ namespace LuneWoL.Core.Config
             }
         }
 
+        [SeparatePage]
         public class EquipmentDented
         {
-            [BackgroundColor(214, 242, 215, 255)]
+            [BackgroundColor(40, 70, 125, 255)]
             public bool ArmourRework { get; set; }
 
-            [BackgroundColor(214, 242, 215, 255)]
+            [BackgroundColor(40, 70, 125, 255)]
             [ReloadRequired]
             public bool DisableAutoReuse { get; set; }
 
-            [BackgroundColor(214, 242, 215, 255)]
+            [BackgroundColor(40, 70, 125, 255)]
             [ReloadRequired]
             public bool NoAccessories { get; set; }
 
-            [BackgroundColor(214, 242, 215, 255)]
+            [BackgroundColor(40, 70, 125, 255)]
             [ReloadRequired]
             public bool ReforgeNerf { get; set; }
 
@@ -151,14 +154,15 @@ namespace LuneWoL.Core.Config
                 HashCode.Combine(DisableAutoReuse, NoAccessories, ReforgeNerf);
         }
 
+        [SeparatePage]
         public class RecipesDented
         {
-            [BackgroundColor(90, 185, 175, 255)]
+            [BackgroundColor(20, 55, 110, 255)]
             [ReloadRequired]
             public bool IgnoreStacksOfOne;
 
-            [BackgroundColor(90, 185, 175, 255)]
-            [SliderColor(90, 185, 175, 255)]
+            [BackgroundColor(20, 55, 110, 255)]
+            [SliderColor(20, 55, 110, 255)]
             [Range(0f, 100f)]
             [Increment(1f)]
             [ReloadRequired]
@@ -181,10 +185,11 @@ namespace LuneWoL.Core.Config
                 HashCode.Combine(RecipePercent, IgnoreStacksOfOne);
         }
 
+        [SeparatePage]
         public class TilesDented
         {
-            [BackgroundColor(75, 100, 75, 255)]
-            [SliderColor(75, 100, 75, 255)]
+            [BackgroundColor(5, 40, 95, 255)]
+            [SliderColor(5, 40, 95, 255)]
             [Range(0f, 100f)]
             [Increment(1f)]
             [ReloadRequired]
@@ -206,34 +211,35 @@ namespace LuneWoL.Core.Config
                 HashCode.Combine(OreDestroyChance);
         }
 
+        [SeparatePage]
         public class NPCsDented
         {
-            [BackgroundColor(245, 85, 80, 255)]
-            [SliderColor(245, 85, 80, 255)]
+            [BackgroundColor(0, 25, 80, 255)]
+            [SliderColor(0, 25, 80, 255)]
             [Range(1f, 25f)]
             [Increment(0.1f)]
             [ReloadRequired]
             public float BuyMult { get; set; }
 
-            [BackgroundColor(245, 85, 80, 255)]
-            [SliderColor(245, 85, 80, 255)]
+            [BackgroundColor(0, 25, 80, 255)]
+            [SliderColor(0, 25, 80, 255)]
             [Range(0f, 1f)]
             [Increment(0.1f)]
             [ReloadRequired]
             public float SellMult { get; set; }
 
-            [BackgroundColor(245, 85, 80, 255)]
-            [SliderColor(245, 85, 80, 255)]
+            [BackgroundColor(0, 25, 80, 255)]
+            [SliderColor(0, 25, 80, 255)]
             [Slider]
             [Range(-1, 50)]
             public int InvasionMultiplier { get; set; }
 
-            [BackgroundColor(245, 85, 80, 255)]
+            [BackgroundColor(0, 25, 80, 255)]
             [ReloadRequired]
             public bool NeverGoldEnough { get; set; }
 
-            [BackgroundColor(245, 85, 80, 255)]
-            [SliderColor(245, 85, 80, 255)]
+            [BackgroundColor(0, 25, 80, 255)]
+            [SliderColor(0, 25, 80, 255)]
             [Range(0f, 1f)]
             [Increment(0.05f)]
             [ReloadRequired]
@@ -260,22 +266,23 @@ namespace LuneWoL.Core.Config
                 HashCode.Combine(BuyMult, SellMult, NeverGoldEnough, NoMoneh);
         }
 
+        [SeparatePage]
         public class WaterRelatedDented
         {
-            [BackgroundColor(155, 160, 225, 255)]
+            [BackgroundColor(0, 15, 70, 255)]
             public bool DarkWaters { get; set; }
 
-            [BackgroundColor(155, 160, 225, 255)]
-            [SliderColor(155, 160, 225, 255)]
+            [BackgroundColor(0, 15, 70, 255)]
+            [SliderColor(0, 15, 70, 255)]
             [Slider]
             [Range(0, 1)]
             [ReloadRequired]
             public int DepthPressureMode { get; set; }
 
-            [BackgroundColor(155, 160, 225, 255)]
+            [BackgroundColor(0, 15, 70, 255)]
             public bool SlowWater { get; set; }
 
-            [BackgroundColor(155, 160, 225, 255)]
+            [BackgroundColor(0, 15, 70, 255)]
             public bool WaterPoison { get; set; }
 
             public WaterRelatedDented()
@@ -295,17 +302,19 @@ namespace LuneWoL.Core.Config
                 HashCode.Combine(DepthPressureMode);
         }
 
+        [SeparatePage]
         public class MiscDented
         {
-            [BackgroundColor(245, 205, 255, 255)]
+            [BackgroundColor(0, 15, 60, 255)]
             [Range(-1, int.MaxValue)]
+            [ReloadRequired]
             public int DespawnItemsTimer { get; set; }
 
-            [BackgroundColor(245, 205, 255, 255)]
+            [BackgroundColor(0, 15, 60, 255)]
             [ReloadRequired]
             public bool DisableWoLItems { get; set; }
 
-            [BackgroundColor(245, 205, 255, 255)]
+            [BackgroundColor(0, 15, 60, 255)]
             [ReloadRequired]
             public bool SkillIssueMode { get; set; }
 
@@ -318,17 +327,19 @@ namespace LuneWoL.Core.Config
             public override bool Equals(object obj)
             {
                 return obj is MiscDented other &&
+                       DespawnItemsTimer == other.DespawnItemsTimer &&
                        DisableWoLItems == other.DisableWoLItems &&
                        SkillIssueMode == other.SkillIssueMode;
             }
 
             public override int GetHashCode() =>
-                HashCode.Combine(DisableWoLItems, SkillIssueMode);
+                HashCode.Combine(DespawnItemsTimer, DisableWoLItems, SkillIssueMode);
         }
 
+        [SeparatePage]
         public class CalamityDented
         {
-            [BackgroundColor(197, 32, 57, 255)]
+            [BackgroundColor(0, 20, 40, 255)]
             public bool DifficultyRebuff { get; set; }
 
             public CalamityDented()
@@ -339,38 +350,38 @@ namespace LuneWoL.Core.Config
 
         #region new()
 
-        [BackgroundColor(205, 240, 255, 255)]
+        [BackgroundColor(155, 170, 205, 200)]
         public MainDented Main = new();
 
-        [BackgroundColor(240, 240, 215, 255)]
+        [BackgroundColor(120, 135, 180, 200)]
         public BiomeSpecificDented BiomeSpecific = new();
 
-        [BackgroundColor(214, 218, 242, 255)]
+        [BackgroundColor(80, 100, 150, 200)]
         public BuffsAndDebuffsDented BuffsAndDebuffs = new();
 
-        [BackgroundColor(214, 242, 215, 255)]
+        [BackgroundColor(40, 70, 125, 200)]
         public EquipmentDented Equipment = new();
 
-        [BackgroundColor(90, 185, 175, 255)]
+        [BackgroundColor(20, 55, 110, 200)]
         public RecipesDented Recipes = new();
         
-        [BackgroundColor(75, 100, 75, 255)]
+        [BackgroundColor(5, 40, 95, 200)]
         public TilesDented Tiles = new();
 
-        [BackgroundColor(245, 85, 80, 255)]
+        [BackgroundColor(0, 25, 80, 200)]
         public NPCsDented NPCs = new();
 
-        [BackgroundColor(155, 160, 225, 255)]
+        [BackgroundColor(0, 15, 70, 200)]
         public WaterRelatedDented WaterRelated = new();
 
-        [BackgroundColor(245, 205, 255, 255)]
+        [BackgroundColor(0, 15, 60, 200)]
         public MiscDented Misc = new();
 
-        [BackgroundColor(197, 32, 57, 255)]
+        [BackgroundColor(0, 20, 40, 200)]
         public CalamityDented CalamityMod = new();
 
-        //spiritmod 82 172 244
-        //[BackgroundColor(82, 172, 244, 255)]
+        //spiritmod 15 15 15
+        //[BackgroundColor(15, 15, 15, 255)]
         //public SpiritDented Spirit = new();
 
         #endregion

@@ -20,9 +20,7 @@ namespace LuneWoL.Common.LWoLPlayers
     public partial class LWoLPlayer : ModPlayer
     {
 
-        public int tundraBlizzardCounter;
-        public int tundraChilledCounter;
-        public int HeatStrokeCounter;
+        public int tundraBlizzardCounter, tundraChilledCounter, HeatStrokeCounter;
 
         #region methods for update update pre skeletron of eye chlututl
 
@@ -31,13 +29,9 @@ namespace LuneWoL.Common.LWoLPlayers
         public void prebuffBurnFreeze()
         {
             var Config = LWoLServerConfig.BiomeSpecific;
-
             if (!Config.SpacePain) return;
-
             if (Player.whoAmI != Main.myPlayer) return;
-
             if (!Player.ZoneNormalSpace) return;
-
             if (Player.behindBackWall) return;
 
             Main.buffNoTimeDisplay[ModContent.BuffType<BoilFreezeDB>()] = true;
@@ -53,13 +47,9 @@ namespace LuneWoL.Common.LWoLPlayers
             var Config = LWoLServerConfig.BiomeSpecific;
 
             if (!Config.HellIsHot) return;
-
             if (!Player.ZoneUnderworldHeight) return;
-
             if (Player.buffImmune[BuffID.Burning] || Player.fireWalk || Player.buffImmune[BuffID.OnFire] || Player.lavaImmune || Player.wet || Player.honeyWet && !Player.lavaWet)
-            {
-                return;
-            }
+            return;
             Main.buffNoTimeDisplay[BuffID.OnFire] = true;
             Player.AddBuff(BuffID.OnFire, 120, false, false);
         }
@@ -74,10 +64,9 @@ namespace LuneWoL.Common.LWoLPlayers
 
             if (Player.OceanMan() && Config.SlowWater && !LL)
             {
-                float maxSpeed = 8f;
-                if (Player.velocity.Length() > maxSpeed)
+                if (Player.velocity.Length() > 8f)
                 {
-                    Player.velocity = Vector2.Normalize(Player.velocity) * maxSpeed;
+                    Player.velocity = Vector2.Normalize(Player.velocity) * 8f;
                 }
             }
         }
@@ -161,8 +150,7 @@ namespace LuneWoL.Common.LWoLPlayers
                     Player.buffTime[BuffID.Ichor] = 180;
                 }
             }
-
-            if (Player.ZoneCorrupt)
+            else if (Player.ZoneCorrupt)
             {
                 Main.buffNoTimeDisplay[BuffID.CursedInferno] = true;
                 Player.AddBuff(BuffID.CursedInferno, 180, true, false);
@@ -171,8 +159,7 @@ namespace LuneWoL.Common.LWoLPlayers
                     Player.buffTime[BuffID.CursedInferno] = 180;
                 }
             }
-
-            if (Player.ZoneJungle)
+            else if (Player.ZoneJungle)
             {
                 Main.buffNoTimeDisplay[BuffID.Poisoned] = true;
                 Player.AddBuff(BuffID.Poisoned, 180, true, false);
@@ -181,8 +168,7 @@ namespace LuneWoL.Common.LWoLPlayers
                     Player.buffTime[BuffID.Poisoned] = 180;
                 }
             }
-
-            if (Player.ZoneHallow)
+            else if (Player.ZoneHallow)
             {
                 Main.buffNoTimeDisplay[BuffID.Confused] = true;
                 Player.AddBuff(BuffID.Confused, 180, true, false);
@@ -209,15 +195,8 @@ namespace LuneWoL.Common.LWoLPlayers
                 Player.AddBuff(BuffID.Bleeding, 60, true, false);
             }
 
-            if (Sandstorm.Happening && Player.ZoneDesert && !Player.behindBackWall)
-            {
-                Player.blackout = true;
-                Player.LibPlayer().LStormEyeCovered = true;
-            }
-            else
-            {
-                Player.LibPlayer().LStormEyeCovered = false;
-            }
+            Player.LibPlayer().LStormEyeCovered = Sandstorm.Happening && Player.ZoneDesert && !Player.behindBackWall ? true : false;
+            Player.blackout = Player.LibPlayer().LStormEyeCovered;
 
             // Check for blizzard and tundra conditions
             if (!WearingFullEskimo && Main.raining && Player.ZoneSnow && !Player.behindBackWall && !Player.HasBuff(BuffID.Campfire))
@@ -294,7 +273,7 @@ namespace LuneWoL.Common.LWoLPlayers
 
         #region EVIL NIGHT TIME BABY
 
-        // evil biomes are night time only?
+        // evil biomes are day time only?
         public void Thisissoevillmfao()
         {
             var Config = LWoLServerConfig.BiomeSpecific;
@@ -401,17 +380,17 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public void DarkWaters()
         {
+            if (!Wait(5000)) return;
             if (LL) return;
-
             if (Player.whoAmI != Main.myPlayer) return;
 
-            var Config = LuneWoL.LWoLServerConfig.WaterRelated;
+            var Config = LWoLServerConfig.WaterRelated;
 
             if (Player.OceanMan() && Config.DarkWaters && Config.DepthPressureMode > 0)
             {
                 Player.LibPlayer().LWaterEyes = true;
             }
-            else if (Player.OceanMan() && Config.DarkWaters && Config.DepthPressureMode! > 0)
+            else if (Player.OceanMan() && Config.DarkWaters && Config.DepthPressureMode != 0)
             {
                 Player.LibPlayer().LWaterEyes = true;
                 Lighting.GlobalBrightness *= 0.8f;
@@ -437,7 +416,7 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public void okback2()
         {
-            var Config = LuneWoL.LWoLServerConfig.Main;
+            var Config = LWoLServerConfig.Main;
 
             if (Config.DeathPenaltyMode != 2) return;
 
