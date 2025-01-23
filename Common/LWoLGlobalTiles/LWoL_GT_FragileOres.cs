@@ -5,7 +5,7 @@ using static LuneLib.Utilities.Hashsets.HashSets;
 
 namespace LuneWoL.Common.LWoLGlobalTiles
 {
-    public class LWoL_GT_FragileOres : GlobalTile
+    public partial class LWoL_GT : GlobalTile
     {
         private static readonly float chance = LuneLibUtils.ToPercentage(LuneWoL.LWoLServerConfig.Tiles.OreDestroyChance);
 

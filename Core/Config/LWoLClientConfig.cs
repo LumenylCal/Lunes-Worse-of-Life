@@ -3,12 +3,12 @@ using Terraria.ModLoader.Config;
 
 namespace LuneWoL.Core.Config
 {
-    [BackgroundColor(15, 50, 50, 255)]
+    [BackgroundColor(10, 75, 105, 255)]
     public class LWoLClientConfig : ModConfig
     {
         public override ConfigScope Mode => ConfigScope.ClientSide;
 
-        [BackgroundColor(205, 240, 255, 0)]
+        [BackgroundColor(35, 115, 145, 255)]
         [DefaultValue(false)]
         public bool STFUCHAT { get; set; }
 
