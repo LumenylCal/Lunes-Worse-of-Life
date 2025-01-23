@@ -24,7 +24,7 @@ namespace LuneWoL
             }
 
             // same as reforge thing
-            if (LuneLib.LuneLib.instance.DarkSurfaceLoaded && LWoLServerConfig.Main.DarkerNights)
+            if (LuneLib.LuneLib.instance.DarkSurfaceLoaded && LWoLServerConfig.Main.DarkerNightsMode != 0)
             {
                 throw new System.Exception("Disable `Darker Nights` in the config if you wanna use the `Dark Surface` mod.\n" + new string('\n', 20));
             }

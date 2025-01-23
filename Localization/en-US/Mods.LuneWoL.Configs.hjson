@@ -262,6 +262,11 @@ MainDented: {
 	}
 
 	DisplayName: Main Dented
+
+	DarkerNightsMode: {
+		Label: Darker Nights Mode
+		Tooltip: ""
+	}
 }
 
 EquipmentDented: {
@@ -497,6 +502,11 @@ MiscDented: {
 
 	SkillIssueMode: {
 		Label: Skill Issue Mode
+		Tooltip: ""
+	}
+
+	DeathPenaltyMode: {
+		Label: Death Penalty Mode
 		Tooltip: ""
 	}
 }

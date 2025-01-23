@@ -17,7 +17,7 @@ namespace LuneWoL.PressureCheckFolder.Mode2
             return
                 !LuneLib.LuneLib.instance.CalamityModLoaded
                 &&
-                LuneWoL.LWoLServerConfig.WaterRelated.DepthPressureMode > 0;
+                LuneWoL.LWoLServerConfig.WaterRelated.DepthPressureMode != 0;
         }
 
         public override void PostUpdateMiscEffects()

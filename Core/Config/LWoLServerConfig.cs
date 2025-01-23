@@ -13,7 +13,7 @@ namespace LuneWoL.Core.Config
             if (pendingConfig is not LWoLServerConfig newConfig)
                 return base.NeedsReload(pendingConfig);
 
-            return !Main.Equals(newConfig.Main) ||
+            return 
                    !Equipment.Equals(newConfig.Equipment) ||
                    !Recipes.Equals(newConfig.Recipes) ||
                    !Tiles.Equals(newConfig.Tiles) ||
@@ -32,15 +32,10 @@ namespace LuneWoL.Core.Config
             public int CritFailMode { get; set; }
 
             [BackgroundColor(155, 170, 205, 255)]
-            [SliderColor(155, 170, 205, 255)]
             [Slider]
-            [Range(0, 3)]
-            [ReloadRequired]
-            public int DeathPenaltyMode { get; set; }
-
-            [BackgroundColor(155, 170, 205, 255)]
-            [ReloadRequired]
-            public bool DarkerNights { get; set; }
+            [SliderColor(155, 170, 205, 255)]
+            [Range(0, 2)]
+            public int DarkerNightsMode { get; set; }
 
             [BackgroundColor(155, 170, 205, 255)]
             public bool WindArrows { get; set; }
@@ -51,22 +46,10 @@ namespace LuneWoL.Core.Config
             public MainDented()
             {
                 CritFailMode = 0;
-                CritFailMode = 0;
-                DarkerNights = false;
+                DarkerNightsMode = 0;
                 WindArrows = false;
                 DemonMode = false;
             }
-
-            public override bool Equals(object obj)
-            {
-                return obj is MainDented other &&
-                       DeathPenaltyMode == other.DeathPenaltyMode &&
-                       DarkerNights == other.DarkerNights;
-
-            }
-
-            public override int GetHashCode() =>
-                HashCode.Combine(DeathPenaltyMode, DarkerNights);
         }
 
         [SeparatePage]
@@ -305,6 +288,13 @@ namespace LuneWoL.Core.Config
         [SeparatePage]
         public class MiscDented
         {
+            [BackgroundColor(155, 170, 205, 255)]
+            [SliderColor(155, 170, 205, 255)]
+            [Slider]
+            [Range(0, 3)]
+            [ReloadRequired]
+            public int DeathPenaltyMode { get; set; }
+
             [BackgroundColor(0, 15, 60, 255)]
             [Range(-1, int.MaxValue)]
             [ReloadRequired]
@@ -320,6 +310,7 @@ namespace LuneWoL.Core.Config
 
             public MiscDented()
             {
+                DeathPenaltyMode = 0;
                 DisableWoLItems = false;
                 SkillIssueMode = false;
                 DespawnItemsTimer = -1;
@@ -327,13 +318,14 @@ namespace LuneWoL.Core.Config
             public override bool Equals(object obj)
             {
                 return obj is MiscDented other &&
+                       DeathPenaltyMode == other.DeathPenaltyMode &&
                        DespawnItemsTimer == other.DespawnItemsTimer &&
                        DisableWoLItems == other.DisableWoLItems &&
                        SkillIssueMode == other.SkillIssueMode;
             }
 
             public override int GetHashCode() =>
-                HashCode.Combine(DespawnItemsTimer, DisableWoLItems, SkillIssueMode);
+                HashCode.Combine(DeathPenaltyMode, DespawnItemsTimer, DisableWoLItems, SkillIssueMode);
         }
 
         [SeparatePage]

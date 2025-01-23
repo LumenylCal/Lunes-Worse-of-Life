@@ -6,7 +6,6 @@ namespace LuneWoL.Common.LWoLSystems
 {
     public partial class LWoLSystem : ModSystem
     {
-
         /*
             modified code from the darker surface mod to allow for moon phase changes
             if the author of the mod sees this feel free reach out if you want me to remove it
@@ -24,6 +23,7 @@ namespace LuneWoL.Common.LWoLSystems
 
         public void DarkerNightsSurfaceLight(ref Color tileColor, ref Color backgroundColor)
         {
+            var c = LuneWoL.LWoLServerConfig.Main;
             float moonPhaseMultiplier = GetMoonPhaseMultiplier(_currentMoonPhase);
 
             float dayGrad = GradFloat((float)Main.time, 0f, 54000f);
@@ -37,10 +37,15 @@ namespace LuneWoL.Common.LWoLSystems
                 tileColor = ToColour(tileColor.ToVector3() * dayGrad);
                 backgroundColor = ToColour(backgroundColor.ToVector3() * dayGrad);
             }
-            else
+            else if (c.DarkerNightsMode == 1)
             {
                 tileColor = ToColour(tileColor.ToVector3() * (nightGrad * moonPhaseMultiplier));
                 backgroundColor = ToColour(backgroundColor.ToVector3() * (nightGrad * moonPhaseMultiplier));
+            }
+            else if (c.DarkerNightsMode == 2)
+            {
+                tileColor = ToColour(tileColor.ToVector3() * 0.3f);
+                backgroundColor = ToColour(backgroundColor.ToVector3() * 0.3f);
             }
 
             if (Main.dayTime && !asd)

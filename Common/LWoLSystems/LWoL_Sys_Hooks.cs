@@ -25,7 +25,9 @@ namespace LuneWoL.Common.LWoLSystems
 
         public override void ModifySunLightColor(ref Color tileColor, ref Color backgroundColor)
         {
-            DarkerNightsSurfaceLight(ref tileColor, ref backgroundColor);
+            var c = LuneWoL.LWoLServerConfig.Main;
+            if (c.DarkerNightsMode != 0)
+                DarkerNightsSurfaceLight(ref tileColor, ref backgroundColor);
         }
     }
 }

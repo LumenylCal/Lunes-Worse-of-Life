@@ -416,7 +416,7 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public void okback2()
         {
-            var Config = LWoLServerConfig.Main;
+            var Config = LWoLServerConfig.Misc;
 
             if (Config.DeathPenaltyMode != 2) return;
 
@@ -437,7 +437,7 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public void THEBLACKONE()
         {
-            var Config = LuneWoL.LWoLServerConfig.Main;
+            var Config = LuneWoL.LWoLServerConfig.Misc;
 
             if (Config.DeathPenaltyMode != 3) return;
 
@@ -458,7 +458,7 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public void ActualBrainrotCodeOnRespawn()
         {
-            var Config = LuneWoL.LWoLServerConfig.Main;
+            var Config = LuneWoL.LWoLServerConfig.Misc;
 
             if (Config.DeathPenaltyMode != 1) return;
 
@@ -497,7 +497,7 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public void uhghhhghhg()
         {
-            var Config = LuneWoL.LWoLServerConfig.Main;
+            var Config = LuneWoL.LWoLServerConfig.Misc;
 
             if (Config.DeathPenaltyMode != 1) return;
 
@@ -518,7 +518,7 @@ namespace LuneWoL.Common.LWoLPlayers
             AUGH = StatModifier.Default;
             ARGHHH = StatModifier.Default;
 
-            var Config = LuneWoL.LWoLServerConfig.Main;
+            var Config = LuneWoL.LWoLServerConfig.Misc;
 
             if (Config.DeathPenaltyMode != 1) return;
 
@@ -527,7 +527,7 @@ namespace LuneWoL.Common.LWoLPlayers
         }
         public void MistaWhiteImInFortnite(BinaryReader gaygaygaygay)
         {
-            var Config = LuneWoL.LWoLServerConfig.Main;
+            var Config = LuneWoL.LWoLServerConfig.Misc;
 
             if (Config.DeathPenaltyMode != 1) return;
 
@@ -536,7 +536,7 @@ namespace LuneWoL.Common.LWoLPlayers
         }
         public void syncthething(int toWho, int fromWho, bool newPlayer)
         {
-            var Config = LuneWoL.LWoLServerConfig.Main;
+            var Config = LuneWoL.LWoLServerConfig.Misc;
 
             if (Config.DeathPenaltyMode != 1) return;
 
@@ -550,7 +550,7 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public void copytheclientthing(ModPlayer targetCopy)
         {
-            var Config = LuneWoL.LWoLServerConfig.Main;
+            var Config = LuneWoL.LWoLServerConfig.Misc;
 
             if (Config.DeathPenaltyMode != 1) return;
 
@@ -561,7 +561,7 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public void sendtheclientthing(ModPlayer clientPlayer)
         {
-            var Config = LuneWoL.LWoLServerConfig.Main;
+            var Config = LuneWoL.LWoLServerConfig.Misc;
 
             if (Config.DeathPenaltyMode != 1) return;
 
@@ -572,7 +572,7 @@ namespace LuneWoL.Common.LWoLPlayers
         }
         public void ActualBrainrotCodeTHISAGUST12TH2025(TagCompound gayshitismyshit)
         {
-            var Config = LuneWoL.LWoLServerConfig.Main;
+            var Config = LuneWoL.LWoLServerConfig.Misc;
 
             if (Config.DeathPenaltyMode != 1) return;
 
@@ -583,7 +583,7 @@ namespace LuneWoL.Common.LWoLPlayers
         }
         public void ActualBrainrotCodebutcooler(TagCompound incestiswincest) // cool bug where if you just rejoin it resets the thingy thing im not fixing it because if you go through the pain of rejoining for that extra hp you deserve it
         {
-            var Config = LuneWoL.LWoLServerConfig.Main;
+            var Config = LuneWoL.LWoLServerConfig.Misc;
 
             if (Config.DeathPenaltyMode != 1) return;
 

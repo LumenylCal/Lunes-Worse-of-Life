@@ -13,6 +13,7 @@ namespace LuneWoL.Common.LWoLGlobalItems
         {
             var p = player.GetModPlayer<LWoLPlayer>();
             var main = LuneWoL.LWoLServerConfig.Main;
+            var misc = LuneWoL.LWoLServerConfig.Misc;
 
             if (player.whoAmI == Main.myPlayer && main.CritFailMode != 0 && p.IsCritFail)
             {
@@ -24,7 +25,7 @@ namespace LuneWoL.Common.LWoLGlobalItems
                 p.DmgPlrBcCrit = true;
             }
 
-            if (item.type == ItemID.LifeCrystal && main.DeathPenaltyMode == 1)
+            if (item.type == ItemID.LifeCrystal && misc.DeathPenaltyMode == 1)
             {
                 if (player.ConsumedLifeCrystals >= Player.LifeCrystalMax)
                 {
@@ -32,7 +33,7 @@ namespace LuneWoL.Common.LWoLGlobalItems
                 }
             }
 
-            if (item.type == ItemID.LifeFruit && main.DeathPenaltyMode == 1)
+            if (item.type == ItemID.LifeFruit && misc.DeathPenaltyMode == 1)
             {
                 if (player.ConsumedLifeFruit >= Player.LifeFruitMax)
                 {
@@ -42,7 +43,7 @@ namespace LuneWoL.Common.LWoLGlobalItems
 
             if (item.type == ItemID.ManaCrystal)
             {
-                if (player.ConsumedManaCrystals >= Player.ManaCrystalMax && main.DeathPenaltyMode == 1)
+                if (player.ConsumedManaCrystals >= Player.ManaCrystalMax && misc.DeathPenaltyMode == 1)
                 {
                     LWoLPlayer.AUURHGHRUGHpart2ofc = true;
                 }
