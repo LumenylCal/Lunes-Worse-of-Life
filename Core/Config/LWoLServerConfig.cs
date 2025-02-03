@@ -288,8 +288,8 @@ namespace LuneWoL.Core.Config
         [SeparatePage]
         public class MiscDented
         {
-            [BackgroundColor(155, 170, 205, 255)]
-            [SliderColor(155, 170, 205, 255)]
+            [BackgroundColor(0, 15, 60, 255)]
+            [SliderColor(0, 15, 60, 255)]
             [Slider]
             [Range(0, 3)]
             [ReloadRequired]

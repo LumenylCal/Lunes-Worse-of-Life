@@ -200,11 +200,15 @@ MainDented: {
 			'''
 	}
 
-	DarkerNights: {
-		Label: Darker Nights
+	DarkerNightsMode: {
+		Label: Darker Nights Mode
 		Tooltip:
 			'''
 			Obscures your vision at night.
+
+			0: Disabled
+			1: Allows the moon to change the brightness at night
+			2: Always pitch black at night
 
 			Suggested by `Lune`.
 			'''
@@ -262,11 +266,6 @@ MainDented: {
 	}
 
 	DisplayName: Main Dented
-
-	DarkerNightsMode: {
-		Label: Darker Nights Mode
-		Tooltip: ""
-	}
 }
 
 EquipmentDented: {
