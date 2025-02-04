@@ -20,7 +20,6 @@ public class CalamityModPatch : ILoadable
 
     public void Unload()
     {
-        MonoModHooks.Modify(CalamityMod.Code.GetType("CalamityMod.NPCs.CalamityGlobalNPC").GetMethod("AdjustMasterModeStatScaling", BindingFlags.Public | BindingFlags.Static), Callback);
     }
 
     private void Callback(ILContext IL)

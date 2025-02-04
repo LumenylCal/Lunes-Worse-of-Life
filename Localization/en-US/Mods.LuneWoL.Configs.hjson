@@ -243,6 +243,11 @@ MainDented: {
 	}
 
 	DisplayName: Main Dented
+
+	CritFailMode: {
+		Label: Crit Fail Mode
+		Tooltip: ""
+	}
 }
 
 EquipmentDented: {
