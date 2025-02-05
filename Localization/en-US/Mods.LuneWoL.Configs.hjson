@@ -190,6 +190,8 @@ BiomeSpecificDented: {
 }
 
 MainDented: {
+	Tooltip: ""
+	DisplayName: Main Dented
 
 	CritFailMode: {
 		Label: Critical Fail
@@ -248,15 +250,6 @@ MainDented: {
 
 			Suggested by `Lune`.
 			'''
-	}
-
-	Tooltip: ""
-
-	DisplayName: Main Dented
-
-	CritFailMode: {
-		Label: Crit Fail Mode
-		Tooltip: ""
 	}
 }
 
@@ -507,11 +500,6 @@ MiscDented: {
 
 	SkillIssueMode: {
 		Label: Skill Issue Mode
-		Tooltip: ""
-	}
-
-	DeathPenaltyMode: {
-		Label: Death Penalty Mode
 		Tooltip: ""
 	}
 }
