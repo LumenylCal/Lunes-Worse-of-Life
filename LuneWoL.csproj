@@ -21,6 +21,9 @@
 		<Reference Include="LuneLib">
 			<HintPath>..\..\ModReader\LuneLib\LuneLib.dll</HintPath>
 		</Reference>
+		<Reference Include="LuneLibAssets">
+			<HintPath>..\..\ModReader\LuneLibAssets\LuneLibAssets.dll</HintPath>
+		</Reference>
 		<Reference Include="CalamityMod">
 			<HintPath>..\..\ModReader\CalamityMod\CalamityMod.dll</HintPath>
 		</Reference>

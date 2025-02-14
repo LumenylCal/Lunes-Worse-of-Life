@@ -23,7 +23,7 @@ namespace LuneWoL.PressureCheckFolder.Mode2
 
         public void BreathChecker()
         { 
-            // stolen from clamtitty mod cause they sorta already had a system for it
+            // stolen from clamtitty mod cause they sorta already had a system for it not really though
             double dR = ModeTwo.tD / ModeTwo.mD;
 
             dR *= 2D;

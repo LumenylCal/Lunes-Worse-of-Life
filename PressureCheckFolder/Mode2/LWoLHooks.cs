@@ -17,12 +17,13 @@ namespace LuneWoL.PressureCheckFolder.Mode2
             return
                 !LuneLib.LuneLib.instance.CalamityModLoaded
                 &&
-                LuneWoL.LWoLServerConfig.WaterRelated.DepthPressureMode != 0;
+                LuneWoL.LWoLServerConfig.WaterRelated.DepthPressureMode == 1;
         }
 
         public override void PostUpdateMiscEffects()
         {
             if (Player.whoAmI != Main.myPlayer) return;
+            asd();
             CheckWaterDepth();
             if (LuneLib.LuneLib.clientConfig.DebugMessages)
             {
@@ -32,7 +33,6 @@ namespace LuneWoL.PressureCheckFolder.Mode2
 
         public override void PostUpdateEquips()
         {
-            if (!Wait(1000)) return;
             if (Player.whoAmI != Main.myPlayer) return;
             if (!LL && LP.OceanMan())
             {
@@ -51,7 +51,6 @@ namespace LuneWoL.PressureCheckFolder.Mode2
 
         public override void PostUpdate()
         {
-            if (!Wait(1000)) return;
             if (Player.whoAmI != Main.myPlayer) return;
             if (!Player.LibPlayer().LWaterEyes) return;
             float value;
