@@ -23,7 +23,6 @@ namespace LuneWoL.PressureCheckFolder.Mode2
         public override void PostUpdateMiscEffects()
         {
             if (Player.whoAmI != Main.myPlayer) return;
-            asd();
             CheckWaterDepth();
             if (LuneLib.LuneLib.clientConfig.DebugMessages)
             {

@@ -10,8 +10,15 @@ using static LuneWoL.PressureCheckFolder.LWoLDepthUtils;
 
 namespace LuneWoL.Common.LWoLPlayers
 {
-    public partial class LWoLPlayer : ModPlayer
+    public class LWoLPlayerDeath : ModPlayer
     {
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return LuneWoL.LWoLServerConfig.WaterRelated.DepthPressureMode == 1 && !LuneLib.LuneLib.instance.CalamityModLoaded;
+        }
+
+
         [JITWhenModsEnabled("LuneLibAssets")]
         public void sound()
         {
@@ -20,38 +27,35 @@ namespace LuneWoL.Common.LWoLPlayers
 
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genDust, ref PlayerDeathReason damageSource)
         {
-            if (ModeTwo != null)
+            if (ModeTwo.rDD > (ModeTwo.mD + 50) && Player.name == "Edith" && Player.OceanMan() && Player.whoAmI == Main.myPlayer)
             {
-                if (ModeTwo.rDD > (ModeTwo.mD + 50) && Player.name == "Edith" && Player.OceanMan() && Player.whoAmI == Main.myPlayer)
+                if (LuneLib.LuneLib.instance.LuneLibAssetsLoaded)
                 {
-                    if (LuneLib.LuneLib.instance.LuneLibAssetsLoaded)
-                    {
-                        sound();
-                    }
-                    damageSource = PlayerDeathReason.ByCustomReason(LuneLibUtils.GetText("Status.Death.PressureDeathEdith").Format(Player.name));
+                    sound();
                 }
-                else if (ModeTwo.rDD > (ModeTwo.mD + 50) && Player.LibPlayer().depthwaterPressure && Player.OceanMan() && Player.whoAmI == Main.myPlayer)
-                {
-                    if (LuneLib.LuneLib.instance.LuneLibAssetsLoaded)
-                    {
-                        sound();
-                    }
-                    damageSource = PlayerDeathReason.ByCustomReason(LuneLibUtils.GetText("Status.Death.PressureDeathTooDeep").Format(Player.name));
-                }
-                else if (ModeTwo.tD >= 50 && Player.OceanMan() && Player.whoAmI == Main.myPlayer)
-                {
-                    if (LuneLib.LuneLib.instance.LuneLibAssetsLoaded)
-                    {
-                        sound();
-                    }
-                    damageSource = PlayerDeathReason.ByCustomReason(LuneLibUtils.GetText("Status.Death.PressureDeath" + Main.rand.Next(1, 9 + 1)).Format(Player.name));
-                }
-                else if (Player.LibPlayer().CrimtuptionzoneNight && Player.whoAmI == Main.myPlayer)
-                {
-                    damageSource = PlayerDeathReason.ByCustomReason(LuneLibUtils.GetText("Status.Death.CrimtuptionzoneDeath").Format(Player.name));
-                }
+                damageSource = PlayerDeathReason.ByCustomReason(LuneLibUtils.GetText("Status.Death.PressureDeathEdith").Format(Player.name));
             }
-            return base.PreKill(damage, hitDirection, pvp, ref playSound, ref genDust, ref damageSource);
+            else if (ModeTwo.rDD > (ModeTwo.mD + 50) && Player.LibPlayer().depthwaterPressure && Player.OceanMan() && Player.whoAmI == Main.myPlayer)
+            {
+                if (LuneLib.LuneLib.instance.LuneLibAssetsLoaded)
+                {
+                    sound();
+                }
+                damageSource = PlayerDeathReason.ByCustomReason(LuneLibUtils.GetText("Status.Death.PressureDeathTooDeep").Format(Player.name));
+            }
+            else if (ModeTwo.tD >= 50 && Player.OceanMan() && Player.whoAmI == Main.myPlayer)
+            {
+                if (LuneLib.LuneLib.instance.LuneLibAssetsLoaded)
+                {
+                    sound();
+                }
+                damageSource = PlayerDeathReason.ByCustomReason(LuneLibUtils.GetText("Status.Death.PressureDeath" + Main.rand.Next(1, 9 + 1)).Format(Player.name));
+            }
+            else if (Player.LibPlayer().CrimtuptionzoneNight && Player.whoAmI == Main.myPlayer)
+            {
+                damageSource = PlayerDeathReason.ByCustomReason(LuneLibUtils.GetText("Status.Death.CrimtuptionzoneDeath").Format(Player.name));
+            }
+            return true;
         }
     }
 }

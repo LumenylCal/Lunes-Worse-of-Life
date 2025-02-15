@@ -31,8 +31,9 @@ namespace LuneWoL.Common.LWoLPlayers
             var Config = LWoLServerConfig.BiomeSpecific;
             if (!Config.SpacePain) return;
             if (Player.whoAmI != Main.myPlayer) return;
-            if (!Player.ZoneNormalSpace) return;
+            if (!Player.ZoneSkyHeight) return;
             if (Player.behindBackWall) return;
+
 
             Main.buffNoTimeDisplay[ModContent.BuffType<BoilFreezeDB>()] = true;
             Player.AddBuff(ModContent.BuffType<BoilFreezeDB>(), 15, true, false);

@@ -44,8 +44,8 @@ namespace LuneWoL.Common.LWoLSystems
             }
             else if (c.DarkerNightsMode == 2)
             {
-                tileColor = ToColour(tileColor.ToVector3() * 0.3f);
-                backgroundColor = ToColour(backgroundColor.ToVector3() * 0.3f);
+                tileColor = ToColour(tileColor.ToVector3() * (nightGrad * 0.3f));
+                backgroundColor = ToColour(backgroundColor.ToVector3() * (nightGrad * 0.3f));
             }
 
             if (Main.dayTime && !asd)
